@@ -303,8 +303,8 @@
 
   
 
-  <!--Modal Registrar-->
-  <div class="modal fade" id="registrar-modal" role="dialog">
+ <!--Modal Registrar-->
+  <div class="modal fade" id="registrar-modal" role="dialog" data-backdrop="static" data-keyboard="false">
       <div class="modal-dialog">
             <div class="modal-content">
                  <div class="modal-header" style="padding:35px 30px;">
@@ -312,52 +312,60 @@
                    <h1><span class="glyphicon glyphicon-user"></span> Registrarme</h1>
                  </div>
                  <div class="modal-body" style="padding:40px 50px;">
-                   <form role="form">
+                   <form role="form" id="form-Registrar">
                         <div class="form-group">
                           <div class="row">
                            <div class="col-xs-8">
-                             <label for="Usuario"><span class="glyphicon glyphicon-user"></span>  Usuario</label>
-                             <input type="text" class="form-control col-sm-2" id="user" placeholder="Ingrese Usuario">
+                             <label for="userRegistrar"><span class="glyphicon glyphicon-user"></span>  *Usuario</label>
+                             <input type="text" class="form-control col-sm-2" id="userRegistrar" placeholder="Ingrese Usuario">
+                             <div id="mensUser" class="errores alert alert-danger">*Ingrese Usuario</div>
                            </div>
                           </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                               <div class="col-xs-8">
-                                <label for="Usuario"><span class="glyphicon glyphicon-envelope"></span>Correo Electronico</label>
-                                <input type="text" class="form-control col-sm-2" id="correo" placeholder="Ingrese Correo Electronico">
+                                <label for="correoRegistrar"><span class="glyphicon glyphicon-envelope"></span>*Correo Electronico</label>
+                                <input type="text" class="form-control col-sm-2" id="correoRegistrar" placeholder="Ingrese Correo Electronico">
+                                <div id="mensCorreo" class="errores alert alert-danger">*Ingrese Correo</div>
                               </div>
                             </div>
                         </div>
                         <div class="form-group">
                           <div class="row">
                               <div class="col-xs-8">
-                                <label for="imagen"><span class="glyphicon glyphicon-picture"></span>Adjuntar un imagen de Perfil</label>
-                                <input type="file" id="iconPerfil" accept="image/gif, image/jpeg, image/png"/>
+
+                                <label for="iconPerfilRegistrar"><span class="glyphicon glyphicon-picture"></span>Adjuntar un imagen de Perfil</label>
+                                <input type="file" id="iconPerfilRegistrar" accept="image/gif, image/jpeg, image/png"/ >
+                                <div id="mensIcon" class="errores2 alert alert-danger">*Ingrese Imagen</div>
+
                               </div>
                            </div>
                         </div>
                         <div class="form-group">
                           <div class="row">
                               <div class="col-xs-8">
-                                <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                                <input type="password" class="form-control" id="pass" placeholder="Ingrese Password">
+                                <label for="passRegistrar"><span class="glyphicon glyphicon-lock"></span>*Password</label>
+                                <input type="password" class="form-control" id="passRegistrar" placeholder="Ingrese Password">
+                                <div id="mensPass1" class="errores2 alert alert-danger">*Ingrese Password</div>
                               </div>
                           </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-8">
-                                  <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                                  <input type="password" class="form-control" id="pass2" placeholder="Confirme la Password">
+                                  <label for="pass2Registrar"><span class="glyphicon glyphicon-lock"></span>*Ingrese otra vez la Password</label>
+                                  <input type="password" class="form-control" id="pass2Registrar" placeholder="Confirme la Password">
+                                  <div id="mensPass2" class="errores2 alert alert-danger">*Password no coinciden</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                            <div class="row">
                               <div class="col-xs-8">
-                                <label for="fecha"><span class="glyphicon glyphicon-calendar"></span>Fecha Nacimiento</label>
-                                <input type="date" class="form-control" data-date-format=" MM yyyy" id="fecha" placeholder="Mes/Año">
+                                <label for="fechaRegistrar"><span class="glyphicon glyphicon-calendar"></span>*Fecha Nacimiento</label>
+                                <input type="date" class="form-control" data-date-format="dd MM yyyy" id="fechaRegistrar" placeholder="Dia/Mes/Año" >
+                                <div id="mensFecha" class="errores2 alert alert-danger">Ingrese fecha</div>
 
                               </div>
                             </div>
@@ -367,11 +375,11 @@
                    </form>
                  </div>
                  <div class="modal-footer">
-                  <div class="checkbox">
-                         <label><input type="checkbox" value="" unchecked>Acepto los <a href="#">Términos y condiciones</a></label>
+                  <div class="checkbox" >
+                         <label><input type="checkbox" id="checkRegistrar" unchecked >Acepto los <a href="#">Términos y condiciones</a></label>
                    </div>
                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancel</span></button>
-                   <button type="submit" id="btnAceptarR"class="btn btn-success btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-ok" > Aceptar</span></button>
+                   <button type="submit"  id="btnAceptarR" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-ok" > Aceptar</span></button>
                  </div>
             </div>
       </div>
@@ -391,7 +399,7 @@
 
   <!--Modal Login-->
 
-  <div class="modal fade" id="login-modal" role="dialog">
+  <div class="modal fade" id="login-modal" role="dialog" data-backdrop="static" data-keyboard="false">
       <div class="modal-dialog">
           <div class="modal-content">
                 <div class="modal-header" style="padding:35px 50px;">
@@ -404,20 +412,22 @@
                       <label for="Usuario"><span class="glyphicon glyphicon-user"></span>Usuario</label>
                       <input type="text" class="form-control" id="user_login" placeholder="Ingrese Usuario">
                    <div class="form-group">
+                   <br/>
                       <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
                       <input type="password" class="form-control" id="pass_login" placeholder="Ingrese Password">
                    </div>
-                   <button type="button" class="btn btn-success btn-block" onclick="login()"><span class="glyphicon glyphicon-share">  Login</span></button>
+                   <button type="button" class="btn btn-success btn-block" onclick="login()"><span class="glyphicon glyphicon-share" >  Login</span></button>
                    </form>
                 </div>
                 <div class="modal-footer">
                    <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
-                   <p>Aun no tiene Cuenta? <a href="#">Registrarme </a></p>
+                   <p>Aun no tiene Cuenta? <a href="" data-toggle="modal" data-target="#registrar-modal" data-dismiss="modal">Registrarme </a></p>
                    <p>Olvido <a href="#">Password?</p>
                 </div>
           </div>
       </div>
   </div>
+
 
      
   <script>
