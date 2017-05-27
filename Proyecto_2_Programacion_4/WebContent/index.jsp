@@ -23,12 +23,12 @@
 
       </div>
      
-      <a class="navbar-brand" href="index.html">Proyecto_1</a>
+      <a class="navbar-brand" href="index.jsp">Proyecto_1</a>
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Tienda</a></li>
+          <li><a href="index.jsp">Tienda</a></li>
           <li><a href="biblioteca.html">Biblioteca</a></li>
         </ul>
 
