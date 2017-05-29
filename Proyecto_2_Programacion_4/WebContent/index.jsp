@@ -8,6 +8,161 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+   	<script >
+
+    function login(){
+      var vector_cuentas = [{usuario:"usuario",contrasenia:"usuario", privilegio:"usuario"},{usuario:"admin",contrasenia:"admin",privilegio:"admin"}];
+      
+      var usuario = document.getElementById("user_login").value;
+      var contrasenia = document.getElementById("pass_login").value;
+
+      console.log(typeof vector_cuentas[0].usuario+"-"+ typeof usuario);
+      console.log(typeof vector_cuentas[0].contrasenia+"-"+typeof contrasenia);
+      
+      var campo;
+      for(var i=0; i<vector_cuentas.length; i++){
+        
+        if(vector_cuentas[i].usuario === usuario && vector_cuentas[i].contrasenia === contrasenia){
+          console.log("IGUALES");
+          if(vector_cuentas[i].privilegio === "usuario"){
+            location.href = "mi_cuenta_yancarlos.html";
+            break;
+          }
+          if(vector_cuentas[i].privilegio === "admin"){
+            location.href = "admin_usuarios.html";
+            break;
+          }
+       
+        }else{
+          console.log("TODAVIA NO");
+        }
+        if(i === vector_cuentas.length-1 && !(vector_cuentas[i].usuario === usuario && vector_cuentas[i].contrasenia === contrasenia)){
+          alert("Usuario o Contraseña Incorrectas")
+        }
+
+    }
+    };
+
+      var emailCorrecto=/\w[\w\d]+@\w+\.\w+/;
+      $(document).ready(function(){
+        $("#btnAceptarR").click(function(){
+
+            var usuario = $("#userRegistrar").val();
+            var correo = $("#correoRegistrar").val(); 
+            var ima = $("#iconPerfilRegistrar").val();
+            var pass1=$("#passRegistrar").val();
+            var pass2=$("#pass2Registrar").val();
+            var fecha=$("#fechaRegistrar").val();
+            var bool=0;
+           
+
+            if(usuario==""|| /^\s+$/.test(usuario)){
+              
+              $("#mensUser").fadeIn();
+              console.log("TODAVIA NO usuario");
+              document.getElementById("userRegistrar").focus();
+              usuario.focus.val("");
+              bool=bool+1;
+            }else{
+              $("#mensUser").fadeOut();
+              bool=bool-1;
+            }
+            
+            if(usuario.length<6){
+            	$("#mensUser1").fadeIn();
+                console.log("TODAVIA NO usuario");
+                document.getElementById("userRegistrar").focus();
+                bool=bool+1;
+            }else{
+                $("#mensUser1").fadeOut();
+                bool=bool-1;
+             }
+
+            if(correo==null||!emailCorrecto.test(correo)){
+                $("#mensCorreo").fadeIn();
+                console.log("TODAVIA NO correo");
+                document.getElementById("correoRegistrar").focus();
+                bool=bool+1;
+            }else{
+                $("#mensCorreo").fadeOut();
+                bool=bool-1;
+
+            }
+
+            if(ima==""){
+              $("#mensIcon").fadeIn();
+              console.log("TODAVIA NO imagen");
+              bool=bool+1;
+            }else{
+              $("#mensIcon").fadeOut();
+              bool=bool-1;
+            }
+
+            if(pass1==""){
+              $("#mensPass1").fadeIn();
+              console.log("TODAVIA NO pass1");
+              document.getElementById("passRegistrar").focus();
+              bool=bool+1;
+            }else{
+                $("#mensPass1").fadeOut();
+                bool=bool-1;
+            }
+            
+            if(pass1.length<6){
+            	$("#mensPass3").fadeIn();
+            	document.getElementById("passRegistrar").focus();
+            	console.log("menor a 6");
+                bool=bool+1;
+            }else{
+                $("#mensPass3").fadeOut();
+                bool=bool-1;
+            }
+            
+
+            if(pass2==""||pass1!=pass2){
+              $("#mensPass2").fadeIn();
+              console.log("TODAVIA NO pass2");
+              document.getElementById("pass2Registrar").focus();
+              bool=bool+1;
+            }else{
+              $("#mensPass2").fadeOut();
+              bool=bool-1;
+            }
+
+            if(fecha==""){
+              $("#mensFecha").fadeIn();
+              console.log("TODAVIA NO fecha");
+              document.getElementById("fechaRegistrar").focus();
+              bool=bool+1;
+            }else{
+              $("#mensFecha").fadeOut();
+              bool=bool-1;
+            }
+
+            if(!$("#checkRegistrar").is(":checked")){
+              alert("Debe Aceptar los terminos y condiciones");
+              bool=bool+1;
+            }else{
+              console.log("si");
+              bool=bool-1;
+            }
+            console.log(bool);
+            if(bool==-9){
+              alert("Registro Exitoso Revise su Correo");
+              $('#registrar-modal').modal('hide');
+              $("#form-Registrar")[0].reset();
+              /*$("#registrar-modal").html("data-dismiss=modal");*/
+            }
+             
+
+
+        });
+            
+
+      });
+	</script>
+    
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" >
@@ -23,7 +178,7 @@
 
       </div>
      
-      <a class="navbar-brand" href="index.jsp">Proyecto_1</a>
+      <a style="" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" width="200" height="50" /></a>
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
@@ -318,7 +473,8 @@
                            <div class="col-xs-8">
                              <label for="userRegistrar"><span class="glyphicon glyphicon-user"></span>  *Usuario</label>
                              <input type="text" class="form-control col-sm-2" id="userRegistrar" placeholder="Ingrese Usuario">
-                             <div id="mensUser" class="errores alert alert-danger">*Ingrese Usuario</div>
+                             <div id="mensUser" class="errores alert alert-danger" hidden>*Ingrese Usuario</div>
+                             <div id="mensUser1" class="errores alert alert-danger" hidden>*Usuario debe ser minimo de 6 caracteres</div>
                            </div>
                           </div>
                         </div>
@@ -327,7 +483,7 @@
                               <div class="col-xs-8">
                                 <label for="correoRegistrar"><span class="glyphicon glyphicon-envelope"></span>*Correo Electronico</label>
                                 <input type="text" class="form-control col-sm-2" id="correoRegistrar" placeholder="Ingrese Correo Electronico">
-                                <div id="mensCorreo" class="errores alert alert-danger">*Ingrese Correo</div>
+                                <div id="mensCorreo" class="errores alert alert-danger" hidden>*Ingrese Correo</div>
                               </div>
                             </div>
                         </div>
@@ -337,7 +493,7 @@
 
                                 <label for="iconPerfilRegistrar"><span class="glyphicon glyphicon-picture"></span>Adjuntar un imagen de Perfil</label>
                                 <input type="file" id="iconPerfilRegistrar" accept="image/gif, image/jpeg, image/png"/ >
-                                <div id="mensIcon" class="errores2 alert alert-danger">*Ingrese Imagen</div>
+                                <div id="mensIcon" class="errores2 alert alert-danger"hidden>*Ingrese Imagen</div>
 
                               </div>
                            </div>
@@ -347,16 +503,17 @@
                               <div class="col-xs-8">
                                 <label for="passRegistrar"><span class="glyphicon glyphicon-lock"></span>*Password</label>
                                 <input type="password" class="form-control" id="passRegistrar" placeholder="Ingrese Password">
-                                <div id="mensPass1" class="errores2 alert alert-danger">*Ingrese Password</div>
+                                <div id="mensPass1" class="errores2 alert alert-danger" hidden>*Ingrese Password</div>
+                                <div id="mensPass3" class="errores2 alert alert-danger" hidden>*Password debe ser minimo de 6 caracteres</div>
                               </div>
                           </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-8">
-                                  <label for="pass2Registrar"><span class="glyphicon glyphicon-lock"></span>*Ingrese otra vez la Password</label>
+                                  <label for="pass2Registrar"><span class="glyphicon glyphicon-lock"></span>*Verifique  la Password</label>
                                   <input type="password" class="form-control" id="pass2Registrar" placeholder="Confirme la Password">
-                                  <div id="mensPass2" class="errores2 alert alert-danger">*Password no coinciden</div>
+                                  <div id="mensPass2" class="errores2 alert alert-danger" hidden>*Password no coinciden</div>
                                 </div>
                             </div>
                         </div>
@@ -365,7 +522,7 @@
                               <div class="col-xs-8">
                                 <label for="fechaRegistrar"><span class="glyphicon glyphicon-calendar"></span>*Fecha Nacimiento</label>
                                 <input type="date" class="form-control" data-date-format="dd MM yyyy" id="fechaRegistrar" placeholder="Dia/Mes/Año" >
-                                <div id="mensFecha" class="errores2 alert alert-danger">Ingrese fecha</div>
+                                <div id="mensFecha" class="errores2 alert alert-danger" hidden>Ingrese fecha</div>
 
                               </div>
                             </div>
@@ -428,16 +585,10 @@
       </div>
   </div>
 
-
-     
-  <script>
-     
-    </script>
-    
    
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+	
 </body>
 </html>
