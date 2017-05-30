@@ -492,7 +492,7 @@
                               <div class="col-xs-8">
 
                                 <label for="iconPerfilRegistrar"><span class="glyphicon glyphicon-picture"></span>Adjuntar un imagen de Perfil</label>
-                                <input type="file" id="iconPerfilRegistrar" accept="image/gif, image/jpeg, image/png"/ >
+                                <input type="file" id="iconPerfilRegistrar" accept="image/gif, image/jpeg, image/png">
                                 <div id="mensIcon" class="errores2 alert alert-danger"hidden>*Ingrese Imagen</div>
 
                               </div>
@@ -585,7 +585,13 @@
       </div>
   </div>
 
-   
+   <script>
+	$("#iconPerfilRegistrar").fileinput({
+	showCaption: false,
+	browseClass: "btn btn-primary btn-lg",
+	fileType: "any"
+	});
+</script>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
