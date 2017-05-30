@@ -68,22 +68,26 @@
 	                        
 	                            Nombre del Juego: <br>
 	                            <span id="alertnombre" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
-	                            	<input type="text" class="form-control" required data-validation-required-message="Ingrese el nombre del Juego" size="50" value="" id="nombre_juego" >
-	                            	<label id="alert" style="color:red" hidden>Ingrese el nombre</label>
+	                            	<input type="text" class="form-control" placeholder="Nombre Juego" required data-validation-required-message="Ingrese el nombre del Juego" size="50" value="" id="nombre_juego" >
+
 	                        	</span>
 	                        	<p class="help-block"></p>
 	                        </div>
                         </div>
                  
                         <div class="col-md-2">
-	                        <div class="control-group">
-	                            Precio: <br>
-	                            <input type="text" class="form-control" id="precio_juego" placeholder="Dolares">
+                        	<div class="control-group form-group">
+		                        <div class="control-group">
+		                            Precio: <br>
+		                             <span id="alertprecio" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+		                            	<input type="text" class="form-control" id="precio_juego" placeholder="Dolares">
+		                            </span>
+		                        </div>
 	                        </div>
                         </div>
                         <div class="col-md-2">
                             Rebaja: <br>
-                            <input type="text" class="form-control" id="rebaja_juego">
+                            <input type="text" class="form-control" id="rebaja_juego" placeholder="Rebaja">
                         </div>
                       
                     </div>
