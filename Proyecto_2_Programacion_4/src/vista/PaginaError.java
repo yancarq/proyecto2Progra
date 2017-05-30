@@ -1,4 +1,4 @@
-package modelo;
+package vista;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UsuarioBean
+ * Servlet implementation class PaginaError
  */
-@WebServlet("/usuario.modelo")
-public class UsuarioBean extends HttpServlet {
+@WebServlet("/paginaErrorVista")
+public class PaginaError extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UsuarioBean() {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    	
+    
+    }
+    public PaginaError() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +28,7 @@ public class UsuarioBean extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		processRequest(request, response);
 	}
 
 	/**
@@ -35,7 +36,7 @@ public class UsuarioBean extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		processRequest(request, response);
 	}
 
 }
