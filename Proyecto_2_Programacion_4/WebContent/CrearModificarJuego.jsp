@@ -17,19 +17,21 @@
                 alert("Los datos se guardaron satisfactoriamente");
         }
         
-      /*   $("#imgJuego1").change(function(){
-        	readURL(this);
-        });*/
-       /* var emailCorrecto=/\w[\w\d]+@\w+\.\w+/;
+    
         $(document).ready(function(){
           $("#btnAceptarR").click(function(){
 
-              var usuario = $("#userRegistrar").val();
-              var correo = $("#correoRegistrar").val(); 
-              var ima = $("#iconPerfilRegistrar").val();
-              var pass1=$("#passRegistrar").val();
-              var pass2=$("#pass2Registrar").val();
-              var fecha=$("#fechaRegistrar").val();
+              var nombre = $("#nombre_juego").val();
+              var precio = $("#precio_juego").val(); 
+              var pimgJuego = $("#pimgJuego").val();
+              var imgJuego1=$("#imgJuego1").val();
+              var imgJuego2=$("#imgJuego2").val();
+              var imgJuego3=$("#imgJuego3").val();
+              var imgJuego3=$("#imgJuego3").val();
+              var imgJuego4=$("#imgJuego4").val();
+              var argumento_juego=$("#argumento_juego").val();
+              var requirimientoM=$("#requirimientoM").val();
+              var requirimientoR=$("#requirimientoR").val();
               var bool=0;
              
 
@@ -237,12 +239,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             Requerimiento Minimo: <br>
-                            <textarea class="form-control" name="argumentoJuego" rows="10" cols="40" required="required">
+                            <textarea class="form-control" name="requirimientoR" rows="10" cols="40" id="requirimientoM">
                             </textarea>
                         </div>
                         <div class="col-md-6">
                             Requerimiento Recomendable: <br>
-                            <textarea class="form-control" name="argumentoJuego" rows="10" cols="40" required="required">
+                            <textarea class="form-control" name="requirimientoR" rows="10" cols="40" id="requirimientoR">
                             </textarea>
                         </div>
                     </div>
