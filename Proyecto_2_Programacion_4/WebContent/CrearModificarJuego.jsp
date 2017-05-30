@@ -6,140 +6,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/validacion.js""></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
-    <script src="js/jquery.min.js"></script>
-    <title>Crear/Modificar Juego</title>
-    <script>
-        function guardar(){
-            var confirmar = confirm("¿Seguro que los datos ingresados estan corrector?");
-            if(confirmar === true)
-                alert("Los datos se guardaron satisfactoriamente");
-        }
-        
     
-        $(document).ready(function(){
-          $("#btnAceptarR").click(function(){
-
-              var nombre = $("#nombre_juego").val();
-              var precio = $("#precio_juego").val(); 
-              var pimgJuego = $("#pimgJuego").val();
-              var imgJuego1=$("#imgJuego1").val();
-              var imgJuego2=$("#imgJuego2").val();
-              var imgJuego3=$("#imgJuego3").val();
-              var imgJuego3=$("#imgJuego3").val();
-              var imgJuego4=$("#imgJuego4").val();
-              var argumento_juego=$("#argumento_juego").val();
-              var requirimientoM=$("#requirimientoM").val();
-              var requirimientoR=$("#requirimientoR").val();
-              var bool=0;
-             
-
-              if(usuario==""|| /^\s+$/.test(usuario)){
-                
-                $("#mensUser").fadeIn();
-                console.log("TODAVIA NO usuario");
-                document.getElementById("userRegistrar").focus();
-                usuario.focus.val("");
-                bool=bool+1;
-              }else{
-                $("#mensUser").fadeOut();
-                bool=bool-1;
-              }
-              
-              if(usuario.length<6){
-              	$("#mensUser1").fadeIn();
-                  console.log("TODAVIA NO usuario");
-                  document.getElementById("userRegistrar").focus();
-                  bool=bool+1;
-              }else{
-                  $("#mensUser1").fadeOut();
-                  bool=bool-1;
-               }
-
-              if(correo==null||!emailCorrecto.test(correo)){
-                  $("#mensCorreo").fadeIn();
-                  console.log("TODAVIA NO correo");
-                  document.getElementById("correoRegistrar").focus();
-                  bool=bool+1;
-              }else{
-                  $("#mensCorreo").fadeOut();
-                  bool=bool-1;
-
-              }
-
-              if(ima==""){
-                $("#mensIcon").fadeIn();
-                console.log("TODAVIA NO imagen");
-                bool=bool+1;
-              }else{
-                $("#mensIcon").fadeOut();
-                bool=bool-1;
-              }
-
-              if(pass1==""){
-                $("#mensPass1").fadeIn();
-                console.log("TODAVIA NO pass1");
-                document.getElementById("passRegistrar").focus();
-                bool=bool+1;
-              }else{
-                  $("#mensPass1").fadeOut();
-                  bool=bool-1;
-              }
-              
-              if(pass1.length<6){
-              	$("#mensPass3").fadeIn();
-              	document.getElementById("passRegistrar").focus();
-              	console.log("menor a 6");
-                  bool=bool+1;
-              }else{
-                  $("#mensPass3").fadeOut();
-                  bool=bool-1;
-              }
-              
-
-              if(pass2==""||pass1!=pass2){
-                $("#mensPass2").fadeIn();
-                console.log("TODAVIA NO pass2");
-                document.getElementById("pass2Registrar").focus();
-                bool=bool+1;
-              }else{
-                $("#mensPass2").fadeOut();
-                bool=bool-1;
-              }
-
-              if(fecha==""){
-                $("#mensFecha").fadeIn();
-                console.log("TODAVIA NO fecha");
-                document.getElementById("fechaRegistrar").focus();
-                bool=bool+1;
-              }else{
-                $("#mensFecha").fadeOut();
-                bool=bool-1;
-              }
-
-              if(!$("#checkRegistrar").is(":checked")){
-                alert("Debe Aceptar los terminos y condiciones");
-                bool=bool+1;
-              }else{
-                console.log("si");
-                bool=bool-1;
-              }
-              console.log(bool);
-              if(bool==-9){
-                alert("Registro Exitoso Revise su Correo");
-                $('#registrar-modal').modal('hide');
-                $("#form-Registrar")[0].reset();
-                /*$("#registrar-modal").html("data-dismiss=modal");
-              }
-               
-
-
-          });
-              
-
-        });*/
-  
+    
+    <title>Crear/Modificar Juego</title>
+    <scrip>
     </script>
 </head>
 <body>
@@ -188,13 +63,23 @@
             <font face="Comic Sans MS,arial,verdana" color="black" size="2">
                 <h3>Modificar/Crear Juego</h3>
                     <div class="row">
-                        <div class="col-md-6">
-                            Nombre del Juego: <br>
-                            <input type="text" class="form-control" size="80" value="" id="nombre_juego"> 
+                        <div class="col-md-4 ">
+	                        <div class="control-group form-group">
+	                        
+	                            Nombre del Juego: <br>
+	                            <span id="alertnombre" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+	                            	<input type="text" class="form-control" required data-validation-required-message="Ingrese el nombre del Juego" size="50" value="" id="nombre_juego" >
+	                            	<label id="alert" style="color:red" hidden>Ingrese el nombre</label>
+	                        	</span>
+	                        	<p class="help-block"></p>
+	                        </div>
                         </div>
+                 
                         <div class="col-md-2">
-                            Precio: <br>
-                            <input type="text" class="form-control" id="precio_juego" placeholder="Dolares">
+	                        <div class="control-group">
+	                            Precio: <br>
+	                            <input type="text" class="form-control" id="precio_juego" placeholder="Dolares">
+	                        </div>
                         </div>
                         <div class="col-md-2">
                             Rebaja: <br>
@@ -249,7 +134,7 @@
                         </div>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-success btn-default pull-left" onclick="guardar()"><span class="glyphicon glyphicon-floppy-disk"> Guardar Cambios</span></button>
+                    <button type="submit" id="botonGuardar"class="btn btn-success btn-default pull-left" ><span class="glyphicon glyphicon-floppy-disk"> Guardar Cambios</span></button>
                      <button type="button" class="btn btn-danger btn-default pull-right"  ref="index.html" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancelar Cambios</span></button>
                     <br>
                     <br>
@@ -269,8 +154,9 @@
       </p>
   </footer>
 
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+   
+   
+   
   <script type="text/javascript">
 	 /* function readURL(input){
 	  	if (input.files && input.files[0]) {
@@ -281,9 +167,9 @@
 	          }
 	          reader.readAsDataURL(input.files[0]);
 	       }
-	  }
+	  }onclick="guardar()"
 	  $("#pimgJuego").change(function(){
-	      readURL(this);
+	     // readURL(this);
 	  });*/
 	  	
 	  
