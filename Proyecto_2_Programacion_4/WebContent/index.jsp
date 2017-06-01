@@ -3,11 +3,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Tienda</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
+    
+     <style>
+      #muro_tags{
+          background-image: url(Recursos/fondo_gris.jpg);
+          background-attachment: fixed;/*para que sea estático*/
+          background-position: top right;/*arriba a la derecha*/
+          margin-top: 60px;
+          margin-left: 30px;
+      }
+   
+    </style>
+    
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" >
@@ -399,7 +411,7 @@
                    <h1><span class="glyphicon glyphicon-user"></span>  Iniciar sesion</h1>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                   <form action="validarLoginUsuarioControladora" method="post">
+                   <form action="verificarUsuarioLogin" method="post">
                    		<div class="form-group">
                    			<label for="Usuario"><span class="glyphicon glyphicon-user"></span>Usuario</label>
                       		<input type="text" class="form-control" name="user_login" id="user_login" placeholder="Ingrese Usuario" required="required">
