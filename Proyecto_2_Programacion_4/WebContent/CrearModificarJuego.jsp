@@ -95,8 +95,10 @@
                     <div class="row">
                     	  <div class="col-md-3" align="left"> 
                         	Imagen Princial<br/>
-                        	<input type="file" id="pimgJuego" name="File1" accept="image/gif, image/jpeg, image/png">      
-                        	<img id="primJ" name="primJ" src=""  class="img1" height="100px" width="100px"/>
+                        	 <span id="alertprecio" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                        		<input type="file" id="pimgJuego" name="File1" accept="image/gif, image/jpeg, image/png">      
+                        		<img id="primJ" name="primJ" src=""  class="img1" height="100px" width="100px"/>
+                        	</span>
                           </div>
                           <div class="col-md-4" align="center">
                           <p align="right"> Inserte 4 Imagenes Preview del Juego</p><br/>
