@@ -7,7 +7,9 @@ public class UserBean {
 	private String usuario;
 	private String contrasenia;
 	private String correo;
-	private String imagen;;
+	private String imagen;
+	private String privilegio;
+	private String nombre;
 	
 	public UserBean(){}
 	
@@ -48,5 +50,21 @@ public class UserBean {
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+
+	public String getPrivilegio() {
+		return privilegio;
+	}
+
+	public void setPrivilegio(String privilegio) {
+		this.privilegio = privilegio;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 }

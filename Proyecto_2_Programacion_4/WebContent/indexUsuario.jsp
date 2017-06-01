@@ -46,7 +46,7 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
         
         <ul class="nav navbar-nav">
           <li><a href="index.jsp">Tienda</a></li>
-          <li><a href="validacionSessionExista">Biblioteca</a></li>
+           <li><a href="validacionSessionExista">Biblioteca</a></li>
         </ul>
 
         <form class="navbar-form navbar-right" id="barraBusqueda">
@@ -56,12 +56,18 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
         
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="" data-toggle="modal" data-target="#registrar-modal"> Registrar</a></li>
-          <li><a href="" data-toggle="modal" id =""data-target="#login-modal">Ingresar</a></li>
-          <!-- CREAR UNA MANERA DE HACER UNA OPCION MAS CON SALIR Y OTRA CON EL NOMBRE PERO SOLO SI HAY UNA SESSION INICIADA -->
+		<%!  String variableLogOut = "";%>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href=""><img src="Recursos/Perfiles/yancarlos.jpe" class="img-circle" width="19"> <%if(bean.getUsuario().equals(null))
+    			out.println("Registrar"); else{ out.println(bean.getUsuario()); variableLogOut = "Salir";}%></a>
+                <ul>
+                    <li><a href="mi_cuenta_yancarlos.html"><span class="glyphicon glyphicon-user"></span> Mi cuenta</a></li>
+                    <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
+                </ul>
+            </li>
+            <li><a href="">|</a></li>
+            <li><a href="salirUsuarioControladora"><%out.println("Salir");%></a></li>
         </ul>
-        
       </div>
     </div>
     
@@ -320,82 +326,6 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
     </div>
   </div>  
 
-  
-
-  <!--Modal Registrar-->
-  <div class="modal fade" id="registrar-modal" role="dialog">
-      <div class="modal-dialog">
-            <div class="modal-content">
-                 <div class="modal-header" style="padding:35px 30px;">
-                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                   <h1><span class="glyphicon glyphicon-user"></span> Registrarme</h1>
-                 </div>
-                 <div class="modal-body" style="padding:40px 50px;">
-                   <form role="form">
-                        <div class="form-group">
-                          <div class="row">
-                           <div class="col-xs-8">
-                             <label for="Usuario"><span class="glyphicon glyphicon-user"></span>  Usuario</label>
-                             <input type="text" class="form-control col-sm-2" id="user" placeholder="Ingrese Usuario">
-                           </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                              <div class="col-xs-8">
-                                <label for="Usuario"><span class="glyphicon glyphicon-envelope"></span>Correo Electronico</label>
-                                <input type="text" class="form-control col-sm-2" id="correo" placeholder="Ingrese Correo Electronico">
-                              </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                              <div class="col-xs-8">
-                                <label for="imagen"><span class="glyphicon glyphicon-picture"></span>Adjuntar un imagen de Perfil</label>
-                                <input type="file" id="iconPerfil" accept="image/gif, image/jpeg, image/png"/>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                              <div class="col-xs-8">
-                                <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                                <input type="password" class="form-control" id="pass" placeholder="Ingrese Password">
-                              </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-8">
-                                  <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                                  <input type="password" class="form-control" id="pass2" placeholder="Confirme la Password">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                           <div class="row">
-                              <div class="col-xs-8">
-                                <label for="fecha"><span class="glyphicon glyphicon-calendar"></span>Fecha Nacimiento</label>
-                                <input type="date" class="form-control" data-date-format=" MM yyyy" id="fecha" placeholder="Mes/Año">
-
-                              </div>
-                            </div>
-                        </div>
-
-
-                   </form>
-                 </div>
-                 <div class="modal-footer">
-                  <div class="checkbox">
-                         <label><input type="checkbox" value="" unchecked>Acepto los <a href="#">Términos y condiciones</a></label>
-                   </div>
-                   <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancel</span></button>
-                   <button type="submit" id="btnAceptarR"class="btn btn-success btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-ok" > Aceptar</span></button>
-                 </div>
-            </div>
-      </div>
-  </div>
-
   <footer>
       <HR align="left" size="2" width="1310" color="Green" noshade>
       <p align="center"> <font face="arial" color="white">
@@ -406,44 +336,6 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
       </p>
     </footer>
 
-  
-
-  <!--Modal Login-->
-
-  <div class="modal fade" id="login-modal" role="dialog">
-      <div class="modal-dialog">
-          <div class="modal-content">
-                <div class="modal-header" style="padding:35px 50px;">
-                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                   <h1><span class="glyphicon glyphicon-user"></span>Iniciar sesion</h1>
-                </div>
-                <div class="modal-body" style="padding:40px 50px;">
-                   <form action="verificarUsuarioLogin" method="post">
-                   		<div class="form-group">
-                   			<label for="Usuario"><span class="glyphicon glyphicon-user"></span>Usuario</label>
-                      		<input type="text" class="form-control" name="user_login" id="user_login" placeholder="Ingrese Usuario" required="required">
-                   		</div>
-                   		<div class="form-group">
-                      		<label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                      		<input type="password" class="form-control" name="pass_login" id="pass_login" placeholder="Ingrese Password" required="required">
-                   		</div>
-                   		<button type="summit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-share">  Login</span></button>
-                   </form>
-                </div>
-                <div class="modal-footer">
-                   <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
-                   <p>Aun no tiene Cuenta? <a href="#">Registrarme </a></p>
-                   <p>Olvido <a href="#">Password?</p>
-                </div>
-          </div>
-      </div>
-  </div>
-
-     
-  <script>
-     
-    </script>
-    
    
 
     <script src="js/jquery.js"></script>

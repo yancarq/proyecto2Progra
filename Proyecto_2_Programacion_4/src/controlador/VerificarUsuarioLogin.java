@@ -36,10 +36,10 @@ public class VerificarUsuarioLogin extends HttpServlet {
 				
 		
 				if (areCredentialsValid) {
-					 RequestDispatcher requestDispatcher=request.getRequestDispatcher("DetalleJuego.jsp");  
+					 RequestDispatcher requestDispatcher = request.getRequestDispatcher("indexUsuario.jsp");  
 					 requestDispatcher.forward(request, response);  
 				}else{
-					RequestDispatcher requestDispatcher=request.getRequestDispatcher("BibliotecaJuegosUsuario.jsp");  
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("BibliotecaJuegosUsuario.jsp");  
 					requestDispatcher.forward(request, response);
 				}
 	}

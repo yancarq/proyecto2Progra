@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="modelo.UserBean"%>
+<%@ page import="modelo.WellKnownAttributes" %>
+<%
+UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -77,7 +82,13 @@
 	
 <!-- ---------------------AQUI INICIA LO QUE HAY QUE HACER DE FORMA DINAMICA------------------------------------->
   <div id="main_juegos" class="container">
-    <h2 align="center" >The Witcher 3: Wild Hunt</h2>
+ 
+  	
+    <h2 align="center5"><%if(bean.getUsuario() == null){
+    	out.println(bean.getUsuario());
+    	} else 
+    		out.println("HOLA"); %>The Witcher 3: Wild Hunt</h2>
+
       <section class="main row">
         
         <article class="col-md-4 col-md-5 col-lg-6" >
