@@ -8,22 +8,148 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="UTF-8">
     <title>Tienda</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
-    
-     <style>
-      #muro_tags{
-          background-image: url(Recursos/fondo_gris.jpg);
-          background-attachment: fixed;/*para que sea estático*/
-          background-position: top right;/*arriba a la derecha*/
-          margin-top: 60px;
-          margin-left: 30px;
-      }
-   
-    </style>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+   	<script >
+    function login(){
+      var vector_cuentas = [{usuario:"usuario",contrasenia:"usuario", privilegio:"usuario"},{usuario:"admin",contrasenia:"admin",privilegio:"admin"}];
+      
+      var usuario = document.getElementById("user_login").value;
+      var contrasenia = document.getElementById("pass_login").value;
+      console.log(typeof vector_cuentas[0].usuario+"-"+ typeof usuario);
+      console.log(typeof vector_cuentas[0].contrasenia+"-"+typeof contrasenia);
+      
+      var campo;
+      for(var i=0; i<vector_cuentas.length; i++){
+        
+        if(vector_cuentas[i].usuario === usuario && vector_cuentas[i].contrasenia === contrasenia){
+          console.log("IGUALES");
+          if(vector_cuentas[i].privilegio === "usuario"){
+            location.href = "mi_cuenta_yancarlos.html";
+            break;
+          }
+          if(vector_cuentas[i].privilegio === "admin"){
+            location.href = "admin_usuarios.html";
+            break;
+          }
+       
+        }else{
+          console.log("TODAVIA NO");
+        }
+        if(i === vector_cuentas.length-1 && !(vector_cuentas[i].usuario === usuario && vector_cuentas[i].contrasenia === contrasenia)){
+          alert("Usuario o Contraseña Incorrectas")
+        }
+    }
+    };
+      var emailCorrecto=/\w[\w\d]+@\w+\.\w+/;
+      $(document).ready(function(){
+        $("#btnAceptarR").click(function(){
+            var usuario = $("#userRegistrar").val();
+            var correo = $("#correoRegistrar").val(); 
+            var ima = $("#iconPerfilRegistrar").val();
+            var pass1=$("#passRegistrar").val();
+            var pass2=$("#pass2Registrar").val();
+            var fecha=$("#fechaRegistrar").val();
+            var bool=0;
+           
+            if(usuario==""|| /^\s+$/.test(usuario)){
+              //revisar
+              $("#mensUser").fadeIn();
+              console.log("TODAVIA NO usuario");
+              document.getElementById("userRegistrar").focus();
+              bool=bool+1;
+            }else{
+              $("#mensUser").fadeOut();
+              bool=bool-1;
+            }
+            
+            if(usuario.length<6){
+            	$("#mensUser1").fadeIn();
+                console.log("TODAVIA NO usuario");
+                document.getElementById("userRegistrar").focus();
+                bool=bool+1;
+            }else{
+                $("#mensUser1").fadeOut();
+                bool=bool-1;
+             }
+            if(correo==null||!emailCorrecto.test(correo)){
+                $("#mensCorreo").fadeIn();
+                console.log("TODAVIA NO correo");
+                document.getElementById("correoRegistrar").focus();
+                bool=bool+1;
+            }else{
+                $("#mensCorreo").fadeOut();
+                bool=bool-1;
+            }
+            if(ima==""){
+              $("#mensIcon").fadeIn();
+              console.log("TODAVIA NO imagen");
+              bool=bool+1;
+            }else{
+              $("#mensIcon").fadeOut();
+              bool=bool-1;
+            }
+            if(pass1==""){
+              $("#mensPass1").fadeIn();
+              console.log("TODAVIA NO pass1");
+              document.getElementById("passRegistrar").focus();
+              bool=bool+1;
+            }else{
+                $("#mensPass1").fadeOut();
+                bool=bool-1;
+            }
+            
+            if(pass1.length<6){
+            	$("#mensPass3").fadeIn();
+            	document.getElementById("passRegistrar").focus();
+            	console.log("menor a 6");
+                bool=bool+1;
+            }else{
+                $("#mensPass3").fadeOut();
+                bool=bool-1;
+            }
+            
+            if(pass2==""||pass1!=pass2){
+              $("#mensPass2").fadeIn();
+              console.log("TODAVIA NO pass2");
+              document.getElementById("pass2Registrar").focus();
+              bool=bool+1;
+            }else{
+              $("#mensPass2").fadeOut();
+              bool=bool-1;
+            }
+            if(fecha==""){
+              $("#mensFecha").fadeIn();
+              console.log("TODAVIA NO fecha");
+              document.getElementById("fechaRegistrar").focus();
+              bool=bool+1;
+            }else{
+              $("#mensFecha").fadeOut();
+              bool=bool-1;
+            }
+            if(!$("#checkRegistrar").is(":checked")){
+              alert("Debe Aceptar los terminos y condiciones");
+              bool=bool+1;
+            }else{
+              console.log("si");
+              bool=bool-1;
+            }
+            console.log(bool);
+            if(bool==-9){
+              alert("Registro Exitoso Revise su Correo");
+              $('#registrar-modal').modal('hide');
+              $("#form-Registrar")[0].reset();
+              /*$("#registrar-modal").html("data-dismiss=modal");*/
+            }
+             
+        });
+            
+      });
+	</script>
     
 </head>
 <body>
@@ -40,7 +166,7 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 
       </div>
      
-      <a class="navbar-brand" href="index.jsp">Proyecto_1</a>
+      <a style="" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" width="200" height="50" /></a>
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
@@ -322,8 +448,8 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 
   
 
-  <!--Modal Registrar-->
-  <div class="modal fade" id="registrar-modal" role="dialog">
+ <!--Modal Registrar-->
+  <div class="modal fade" id="registrar-modal" role="dialog" data-backdrop="static" data-keyboard="false">
       <div class="modal-dialog">
             <div class="modal-content">
                  <div class="modal-header" style="padding:35px 30px;">
@@ -331,52 +457,62 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
                    <h1><span class="glyphicon glyphicon-user"></span> Registrarme</h1>
                  </div>
                  <div class="modal-body" style="padding:40px 50px;">
-                   <form role="form">
+                   <form role="form" id="form-Registrar">
                         <div class="form-group">
                           <div class="row">
                            <div class="col-xs-8">
-                             <label for="Usuario"><span class="glyphicon glyphicon-user"></span>  Usuario</label>
-                             <input type="text" class="form-control col-sm-2" id="user" placeholder="Ingrese Usuario">
+                             <label for="userRegistrar"><span class="glyphicon glyphicon-user"></span>  *Usuario</label>
+                             <input type="text" class="form-control col-sm-2" id="userRegistrar" placeholder="Ingrese Usuario">
+                             <div id="mensUser" class="errores alert alert-danger" hidden>*Ingrese Usuario</div>
+                             <div id="mensUser1" class="errores alert alert-danger" hidden>*Usuario debe ser minimo de 6 caracteres</div>
                            </div>
                           </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                               <div class="col-xs-8">
-                                <label for="Usuario"><span class="glyphicon glyphicon-envelope"></span>Correo Electronico</label>
-                                <input type="text" class="form-control col-sm-2" id="correo" placeholder="Ingrese Correo Electronico">
+                                <label for="correoRegistrar"><span class="glyphicon glyphicon-envelope"></span>*Correo Electronico</label>
+                                <input type="text" class="form-control col-sm-2" id="correoRegistrar" placeholder="Ingrese Correo Electronico">
+                                <div id="mensCorreo" class="errores alert alert-danger" hidden>*Ingrese Correo</div>
                               </div>
                             </div>
                         </div>
                         <div class="form-group">
                           <div class="row">
                               <div class="col-xs-8">
-                                <label for="imagen"><span class="glyphicon glyphicon-picture"></span>Adjuntar un imagen de Perfil</label>
-                                <input type="file" id="iconPerfil" accept="image/gif, image/jpeg, image/png"/>
+
+                                <label for="iconPerfilRegistrar"><span class="glyphicon glyphicon-picture"></span>Adjuntar un imagen de Perfil</label>
+                                <input type="file" id="iconPerfilRegistrar" accept="image/gif, image/jpeg, image/png"/ >
+                                <div id="mensIcon" class="errores2 alert alert-danger"hidden>*Ingrese Imagen</div>
+
                               </div>
                            </div>
                         </div>
                         <div class="form-group">
                           <div class="row">
                               <div class="col-xs-8">
-                                <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                                <input type="password" class="form-control" id="pass" placeholder="Ingrese Password">
+                                <label for="passRegistrar"><span class="glyphicon glyphicon-lock"></span>*Password</label>
+                                <input type="password" class="form-control" id="passRegistrar" placeholder="Ingrese Password">
+                                <div id="mensPass1" class="errores2 alert alert-danger" hidden>*Ingrese Password</div>
+                                <div id="mensPass3" class="errores2 alert alert-danger" hidden>*Password debe ser minimo de 6 caracteres</div>
                               </div>
                           </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-8">
-                                  <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                                  <input type="password" class="form-control" id="pass2" placeholder="Confirme la Password">
+                                  <label for="pass2Registrar"><span class="glyphicon glyphicon-lock"></span>*Verifique  la Password</label>
+                                  <input type="password" class="form-control" id="pass2Registrar" placeholder="Confirme la Password">
+                                  <div id="mensPass2" class="errores2 alert alert-danger" hidden>*Password no coinciden</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                            <div class="row">
                               <div class="col-xs-8">
-                                <label for="fecha"><span class="glyphicon glyphicon-calendar"></span>Fecha Nacimiento</label>
-                                <input type="date" class="form-control" data-date-format=" MM yyyy" id="fecha" placeholder="Mes/Año">
+                                <label for="fechaRegistrar"><span class="glyphicon glyphicon-calendar"></span>*Fecha Nacimiento</label>
+                                <input type="date" class="form-control" data-date-format="dd MM yyyy" id="fechaRegistrar" placeholder="Dia/Mes/Año" >
+                                <div id="mensFecha" class="errores2 alert alert-danger" hidden>Ingrese fecha</div>
 
                               </div>
                             </div>
@@ -386,11 +522,11 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
                    </form>
                  </div>
                  <div class="modal-footer">
-                  <div class="checkbox">
-                         <label><input type="checkbox" value="" unchecked>Acepto los <a href="#">Términos y condiciones</a></label>
+                  <div class="checkbox" >
+                         <label><input type="checkbox" id="checkRegistrar" unchecked >Acepto los <a href="#">Términos y condiciones</a></label>
                    </div>
                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancel</span></button>
-                   <button type="submit" id="btnAceptarR"class="btn btn-success btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-ok" > Aceptar</span></button>
+                   <button type="submit"  id="btnAceptarR" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-ok" > Aceptar</span></button>
                  </div>
             </div>
       </div>
@@ -410,7 +546,7 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 
   <!--Modal Login-->
 
-  <div class="modal fade" id="login-modal" role="dialog">
+  <div class="modal fade" id="login-modal" role="dialog" data-backdrop="static" data-keyboard="false">
       <div class="modal-dialog">
           <div class="modal-content">
                 <div class="modal-header" style="padding:35px 50px;">
@@ -418,36 +554,31 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
                    <h1><span class="glyphicon glyphicon-user"></span>Iniciar sesion</h1>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                   <form action="verificarUsuarioLogin" method="post">
-                   		<div class="form-group">
-                   			<label for="Usuario"><span class="glyphicon glyphicon-user"></span>Usuario</label>
-                      		<input type="text" class="form-control" name="user_login" id="user_login" placeholder="Ingrese Usuario" required="required">
-                   		</div>
-                   		<div class="form-group">
-                      		<label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                      		<input type="password" class="form-control" name="pass_login" id="pass_login" placeholder="Ingrese Password" required="required">
-                   		</div>
-                   		<button type="summit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-share">  Login</span></button>
+                   <form role="form">
+                   <div class="form-group">
+                      <label for="Usuario"><span class="glyphicon glyphicon-user"></span>Usuario</label>
+                      <input type="text" class="form-control" id="user_login" placeholder="Ingrese Usuario">
+                   <div class="form-group">
+                   <br/>
+                      <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
+                      <input type="password" class="form-control" id="pass_login" placeholder="Ingrese Password">
+                   </div>
+                   <button type="button" class="btn btn-success btn-block" onclick="login()"><span class="glyphicon glyphicon-share" >  Login</span></button>
                    </form>
                 </div>
                 <div class="modal-footer">
                    <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
-                   <p>Aun no tiene Cuenta? <a href="#">Registrarme </a></p>
+                   <p>Aun no tiene Cuenta? <a href="" data-toggle="modal" data-target="#registrar-modal" data-dismiss="modal">Registrarme </a></p>
                    <p>Olvido <a href="#">Password?</p>
                 </div>
           </div>
       </div>
   </div>
 
-     
-  <script>
-     
-    </script>
-    
    
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+	
 </body>
 </html>
