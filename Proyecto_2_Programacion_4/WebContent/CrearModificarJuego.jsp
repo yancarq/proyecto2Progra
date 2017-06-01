@@ -77,7 +77,7 @@
 		                        <div class="control-group">
 		                            Precio: <br>
 		                             <span id="alertprecio" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
-		                            	<input type="text" class="form-control" id="precio_juego" placeholder="Dolares">
+		                            	<input type="text" class="form-control" id="precio_juego" placeholder="Dolares" onkeypress="return validarNum(event)">
 		                            </span>
 		                        </div>
 	                        </div>
@@ -92,8 +92,8 @@
                     <div class="row">
                     	  <div class="col-md-3" align="left"> 
                         	Imagen Princial<br/>
-                        	 <span id="alertImgP" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
-                        		<input type="file" id="pimgJuego" name="File1" accept="image/gif, image/jpeg, image/png">      
+                        	<span id="alertnombre" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                        	   	<input type="file" id="pimgJuego" accept="image/gif, image/jpeg, image/png">
                         		<img id="primJ" name="primJ" src=""  class="img1" height="100px" width="100px"/>
                         	</span>
                           </div>
