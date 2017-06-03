@@ -92,7 +92,7 @@
                     <div class="row">
                     	  <div class="col-md-3" align="left"> 
                         	Imagen Princial<br/>
-                        	<span id="alertnombre" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                        	<span id="alertImgP" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
                         	   	<input type="file" id="pimgJuego" accept="image/gif, image/jpeg, image/png">
                         		<img id="primJ" name="primJ" src=""  class="img1" height="100px" width="100px"/>
                         	</span>
@@ -100,40 +100,64 @@
                           <div class="col-md-4" align="center">
                           <p align="right"> Inserte 4 Imagenes Preview del Juego</p><br/>
                           
-                           <input type="file" id="imgJuego1" accept="image/gif, image/jpeg, image/png" >
-                           <img id="juego1" src="" alt="imagen1" class="img1" height="100px" width="100px"/>
+                           <span id="alertImg1" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+	                           <input type="file" id="imgJuego1" accept="image/gif, image/jpeg, image/png" >
+	                           <img id="juego1" src="" alt="imagen1" class="img1" height="100px" width="100px"/>
+                           </span>
                            <br/>
-                           <input type="file" id="imgJuego2" accept="image/gif, image/jpeg, image/png">
-                           <img id="juego2" src="" alt="imagen2" class="img1" height="100px" width="100px"/>
+                           <span id="alertImg2" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                           		<input type="file" id="imgJuego2" accept="image/gif, image/jpeg, image/png">
+                           		<img id="juego2" src="" alt="imagen2" class="img1" height="100px" width="100px"/>
+                           </span>
                           </div>
                           <br/>
                        	  <div class="col-md-4" align="right">
                        	  <br/>
                        	  <br/>
-                       	    <input type="file" id="imgJuego3" accept="image/gif, image/jpeg, image/png" >
-                       	    <img id="juego3" src="" alt="imagen3" class="img1" height="100px" width="100px"/>
+                       	    <span id="alertImg3" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                       	   		 <input type="file" id="imgJuego3" accept="image/gif, image/jpeg, image/png" >
+                       	   		 <img id="juego3" src="" alt="imagen3" class="img1" height="100px" width="100px"/>
+                       	    </span>
                        	    <br/>
-                            <input type="file" id="imgJuego4" accept="image/gif, image/jpeg, image/png" >
-                       	    <img id="juego4" src="" alt="imagen4" class="img1" height="100px" width="100px"/>
+                       	    <span id="alertImg4" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                            	<input type="file" id="imgJuego4" accept="image/gif, image/jpeg, image/png" >
+                       	    	<img id="juego4" src="" alt="imagen4" class="img1" height="100px" width="100px"/>
+                       	    </span>
                        	  </div>
                     
                     
                     </div>
-                    Argumento: <br>
-                    <textarea class="form-control" name="argumentoJuego" rows="10" cols="40" id="argumento_juego">
-                    </textarea>
-                    Etiquetas: <br>
-                    <input type="text" class="form-control" size="80" value="" id Etiquetas>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-11">
+                   		 	Argumento: <br>
+                    		<span id="alertArgumento" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                   				 <textarea class="form-control" name="argumentoJuego" rows="10" cols="20" id="argumento_juego">
+                   				 </textarea>
+                   			</span>
+              			</div>
+              			</div>
+              		<div class="row">
+                        <div class="col-md-11">	
+                  		  Etiquetas: <br>
+                   		 <span id="alertEtiqueta" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                    			<input type="text" class="form-control" size="80" value="" id="etiquetas_juego">
+                  	     </span>
+                  	   </div>
+                  	 </div>
+                    <div class="row">
+                        <div class="col-md-5">
                             Requerimiento Minimo: <br>
-                            <textarea class="form-control" name="requirimientoR" rows="10" cols="40" id="requirimientoM">
-                            </textarea>
+                            <span id="alertRMin" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                            	<textarea class="form-control" name="requirimientoR" rows="10" cols="40" id="requirimientoM">
+                            	</textarea>
+                            </span>
                         </div>
                         <div class="col-md-6">
                             Requerimiento Recomendable: <br>
-                            <textarea class="form-control" name="requirimientoR" rows="10" cols="40" id="requirimientoR">
-                            </textarea>
+                            <span id="alertRMax" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
+                           		 <textarea class="form-control" name="requirimientoR" rows="10" cols="40" id="requirimientoR">
+                           		 </textarea>
+                            </span>
                         </div>
                     </div>
                     <br>
