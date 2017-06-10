@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%@ page import="modelo.UserBean"%>
+<%@ page import="modelo.WellKnownAttributes" %>
+<%	UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,6 +23,15 @@
           height: 65px;
         }
     </style>
+    
+    <script>
+	  <!--  
+		   $(document).ready(function()
+				   {
+				      $("#mostrarmodal").modal("show");
+				   });
+	  -->
+	</script>
 </head>
 <body>
  	<nav class="navbar navbar-inverse navbar-fixed-top" >
@@ -33,13 +47,13 @@
 
       </div>
      
-      <a class="navbar-brand" href="index.html">Proyecto_1</a>
+      <a style="padding-top:3px; margin-left:0px;" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" height="46" /></a>
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
           <li><a href="index.html">Tienda</a></li>
-          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="BibliotecaJuegosUsuario.jsp">Biblioteca</a></li>
         </ul>
 
         <form class="navbar-form navbar-right" id="barraBusqueda">
@@ -48,16 +62,17 @@
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        
-        <ul class="nav navbar-nav navbar-right">
-             <li><a href=""><img src="Recursos/Perfiles/yancarlos.jpe" class="img-circle" width="19"> Yancarlos R.</a>
+       
+ 		<%System.out.println(bean.getUsuario()); %>
+        <ul class="nav navbar-nav navbar-right"> <!--try{bean.getImagen();}catch(Exception e){response.sendRedirect("/paginaErrorVista");} -->
+             <li><a href=""><img id="user" src="Recursos/Perfiles/yancarlos.jpe" class="img-circle" width="19"> <% out.println(bean.getUsuario());%></a>
                 <ul>
                     <li><a href="mi_cuenta_yancarlos.html"><span class="glyphicon glyphicon-user"> Mi cuenta</span></a></li>
                     <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart"> Carrito</span></a></li>
                 </ul>
             </li>
             <li><a href="">|</a></li>
-            <li><a href="index.html">Salir</a></li>
+            <li><a href="salirUsuarioControladora">Salir</a></li>
         </ul>
         
       </div>      

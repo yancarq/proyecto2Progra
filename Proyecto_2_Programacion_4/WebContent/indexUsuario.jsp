@@ -2,9 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="modelo.UserBean"%>
 <%@ page import="modelo.WellKnownAttributes" %>
-<%	UserBean bean; 
-
-bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
+<%	UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,17 +12,7 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
     
-     <style>
-      #muro_tags{
-          background-image: url(Recursos/fondo_gris.jpg);
-          background-attachment: fixed;/*para que sea estático*/
-          background-position: top right;/*arriba a la derecha*/
-          margin-top: 60px;
-          margin-left: 30px;
-      }
-   
-    </style>
-    
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" >
@@ -40,26 +28,73 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 
       </div>
      
-      <a class="navbar-brand" href="index.jsp">Proyecto_1</a>
+      <a style="padding-top:3px; margin-left:0px;" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" height="46" /></a>
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
-          <li><a href="index.jsp">Tienda</a></li>
-           <li><a href="validacionSessionExista">Biblioteca</a></li>
+          <li><a href="redireccionamientoIndex?usuario=<%
+           try{out.println(bean.getUsuario());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 requestDispatcher.forward(request, response);
+			 System.out.println("USUARIO");}%>&imagen=<%
+			try{out.println(bean.getImagen());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("IMAGEN");}%>&nombre=<%
+			 try{out.println(bean.getNombre());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("NOMBRE");}%>&correo=<%
+			 try{out.println(bean.getCorreo());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("CORREO");}%>&contrasenia=<%
+			 	try{out.println(bean.getContrasenia());}catch(Exception e){
+		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+					 	requestDispatcher.forward(request, response);System.out.println("CONTRA");}%>&privilagio=<%
+				try{out.println(bean.getPrivilegio());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("PRIVILEGIO");}%>">Tienda</a></li>
+           <li><a href="redireccionarBiblioteca?usuario=<%
+           try{out.println(bean.getUsuario());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 requestDispatcher.forward(request, response);
+			 System.out.println("USUARIO");}%>&imagen=<%
+			try{out.println(bean.getImagen());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("IMAGEN");}%>&nombre=<%
+			 try{out.println(bean.getNombre());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("NOMBRE");}%>&correo=<%
+			 try{out.println(bean.getCorreo());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("CORREO");}%>&contrasenia=<%
+			 	try{out.println(bean.getContrasenia());}catch(Exception e){
+		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+					 	requestDispatcher.forward(request, response);System.out.println("CONTRA");}%>&privilagio=<%
+				try{out.println(bean.getPrivilegio());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);System.out.println("PRIVILEGIO");}%>">Biblioteca</a></li>
         </ul>
-
+		
         <form class="navbar-form navbar-right" id="barraBusqueda">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        
 		<%!  String variableLogOut = "";%>
+	
          <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><img src="Recursos/Perfiles/yancarlos.jpe" class="img-circle" width="19"> <%if(bean.getUsuario().equals(null))
-    			out.println("Registrar"); else{ out.println(bean.getUsuario()); variableLogOut = "Salir";}%></a>
+            <li><a href=""><img src=<%try{
+            		out.println(bean.getImagen());
+            	}catch(Exception e){
+            		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 		requestDispatcher.forward(request, response);
+            	} %> class="img-circle" width="19"> <% try{ 
+            			out.println(bean.getUsuario());
+            	}catch(Exception e){
+            		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 		requestDispatcher.forward(request, response);
+			 	}%></a>
                 <ul>
                     <li><a href="mi_cuenta_yancarlos.html"><span class="glyphicon glyphicon-user"></span> Mi cuenta</a></li>
                     <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
@@ -106,7 +141,7 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
           <font color="Lime">
             Novedades:
           </font>
-        </h2>
+        </h2> 
         <div id="myCarousel" class="carousel slide" >
           <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

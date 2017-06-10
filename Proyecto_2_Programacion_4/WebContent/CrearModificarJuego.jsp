@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="modelo.UserBean"%>
+<%@ page import="modelo.WellKnownAttributes" %>
+<%	UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +33,7 @@
         </button>
       </div>
      
-      <a class="navbar-brand" href="index.html">Proyecto_1</a>
+      <a style="padding-top:3px; margin-left:0px;" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" height="46" /></a>
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
@@ -48,7 +51,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="">Señor Administrador</a></li>
             <li><a href="">|</a></li>
-            <li><a href="index.html">Salir</a></li>
+            <li><a href="salirUsuarioControladora">Salir</a></li>
         </ul>
         
       </div>      

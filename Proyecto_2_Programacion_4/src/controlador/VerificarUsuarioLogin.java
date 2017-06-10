@@ -26,20 +26,25 @@ public class VerificarUsuarioLogin extends HttpServlet {
 				response.setContentType("text/html");
 	
 				UserBean userBean = new UserBean(request.getParameter("user_login"),request.getParameter("pass_login"));
-								
-				
+				userBean.setImagen("yancarlos.jpe");
+				userBean.setNombre("Jason");
+				userBean.setCorreo("jason@gmail.com");
+				userBean.setPrivilegio("admin");
+
 				request.setAttribute(WellKnownAttributes.SESSION_BEAN, userBean);
 				
 			
 				DAO userDAO = new DAO();
 				boolean areCredentialsValid = userDAO.AreValidCredentials(userBean);
 				
-		
+				System.out.println(request.getParameter("user_login")+"USER");
+				
 				if (areCredentialsValid) {
 					 RequestDispatcher requestDispatcher = request.getRequestDispatcher("indexUsuario.jsp");  
 					 requestDispatcher.forward(request, response);  
 				}else{
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("BibliotecaJuegosUsuario.jsp");  
+					System.out.println("ERROR EN VERIFICACION");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
 					requestDispatcher.forward(request, response);
 				}
 	}

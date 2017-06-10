@@ -10,6 +10,7 @@ public class UserBean {
 	private String imagen;
 	private String privilegio;
 	private String nombre;
+	private String direccion;
 	
 	public UserBean(){}
 	
@@ -49,7 +50,7 @@ public class UserBean {
 		return imagen;
 	}
 	public void setImagen(String imagen) {
-		this.imagen = imagen;
+		this.imagen = "Recursos/Perfiles/"+imagen;
 	}
 
 	public String getPrivilegio() {
@@ -66,5 +67,13 @@ public class UserBean {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 }

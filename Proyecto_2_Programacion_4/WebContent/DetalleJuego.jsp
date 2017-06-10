@@ -49,8 +49,8 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
 
       </div>
      
-      <a class="navbar-brand" href="index.html">Proyecto_1</a>
-      
+      <a style="padding-top:3px; margin-left:0px;" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" height="46" /></a>  
+          
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
@@ -66,14 +66,14 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
         </form>
         
         <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><img src="Recursos/Perfiles/yancarlos.jpe" class="img-circle" width="19"> Yancarlos R.</a>
+            <li><a href=""><img src=try{out.println(bean.getImagen());}catch(Excetion e){response.sendRedirect("/paginaErrorVista");} class="img-circle" width="19"> <%try{ out.println(bean.getUsuario()); }catch(Exception e){response.sendRedirect("/paginaErrorVista");} %></a>
                 <ul>
                     <li><a href="mi_cuenta_yancarlos.html"><span class="glyphicon glyphicon-user"></span> Mi cuenta</a></li>
                     <li><a href="carrito.html"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
                 </ul>
             </li>
             <li><a href="">|</a></li>
-            <li><a href="Index.jsp">Salir</a></li>
+            <li><a href="salirUsuarioControladora">Salir</a></li>
         </ul>
         
       </div>      
@@ -84,10 +84,7 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
   <div id="main_juegos" class="container">
  
   	
-    <h2 align="center5"><%if(bean.getUsuario() == null){
-    	out.println(bean.getUsuario());
-    	} else 
-    		out.println("HOLA"); %>The Witcher 3: Wild Hunt</h2>
+    <h2 align="center5">The Witcher 3: Wild Hunt</h2>
 
       <section class="main row">
         

@@ -19,8 +19,7 @@ import modelo.WellKnownAttributes;
 @WebServlet("/salirUsuarioControladora")
 public class SalirUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	 //Ya sea que el método sea por GET o POST, cerraremos la sesion.
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -31,9 +30,7 @@ public class SalirUsuario extends HttpServlet {
 		request.getSession().invalidate();
 		
 		// redirecciona hacia 
-		
-		RequestDispatcher rd= getServletContext().getRequestDispatcher("/validacionSessionExista"); 
-		rd.include(request, response); 
+		response.sendRedirect(request.getContextPath()+"/login.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

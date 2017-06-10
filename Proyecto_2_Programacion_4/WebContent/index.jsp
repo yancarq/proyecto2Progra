@@ -15,8 +15,8 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
     <link rel="stylesheet" href="estilos.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
    	<script >
-    function login(){
-      var vector_cuentas = [{usuario:"usuario",contrasenia:"usuario", privilegio:"usuario"},{usuario:"admin",contrasenia:"admin",privilegio:"admin"}];
+    /*function login(){
+      var vector_cuentas = [{usuario:"usuario",contrasenia:"usuario", privilegio:"usuario"},{usuario:"admin",contrasenia:"admin",privilegio:"123"}];
       
       var usuario = document.getElementById("user_login").value;
       var contrasenia = document.getElementById("pass_login").value;
@@ -44,7 +44,7 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
           alert("Usuario o Contraseña Incorrectas")
         }
     }
-    };
+    };*/
       var emailCorrecto=/\w[\w\d]+@\w+\.\w+/;
       $(document).ready(function(){
         $("#btnAceptarR").click(function(){
@@ -150,6 +150,13 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
             
       });
 	</script>
+	
+	<style>
+		container {
+		    width: 1164px;
+		}
+		
+	</style>
     
 </head>
 <body>
@@ -166,13 +173,12 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 
       </div>
      
-      <a style="" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" width="200" height="50" /></a>
+      +
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
           <li><a href="index.jsp">Tienda</a></li>
-          <li><a href="validacionSessionExista">Biblioteca</a></li>
         </ul>
 
         <form class="navbar-form navbar-right" id="barraBusqueda">
@@ -194,34 +200,9 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
   </nav>
   
   <br>
-  <div="container" >      
-    <div style="border: 450px; margin-top: -25px;" class"img-responsive row" >
-      <article height="60" class="col-md-2">
-        <div id="muro_tags">
-          <ul>
-            <font face="Comic Sans MS,arial,verdana" color="black" size="2">
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Magia</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Mundo Abierto</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Aventura</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Ciencia ficción</a></li><br>              
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Acción</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Guerra</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Sigilo</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Plataformas</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Estrategia</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Horror</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Arcade</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >RPG</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Deportes</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Indie</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Acceo Anticipado</a></li><br>
-              <br>
-            </font>
-          </ul>
-        </div>
-      </article>
-      
-      <aside class="col-md-9">
+  <div="container-fluid" >      
+    <div style="border: 450px; margin-top: -25px; margin-left: 20px; margin-right: 30px;" class"img-responsive" >
+
         <h2>
           <font color="Lime">
             Novedades:
@@ -244,10 +225,11 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 <!-- Carousel nav -->
           <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        </div>
-      </aside>     
+        </div>   
     </div>
   </div>
+  
+
 
   <div class="container-fluid" id="main_juegos">
     <div class="row">
@@ -546,7 +528,7 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 
   <!--Modal Login-->
 
-  <div class="modal fade" id="login-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal fade" id="login-modal" role="dialog">
       <div class="modal-dialog">
           <div class="modal-content">
                 <div class="modal-header" style="padding:35px 50px;">
@@ -554,26 +536,27 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
                    <h1><span class="glyphicon glyphicon-user"></span>Iniciar sesion</h1>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                   <form role="form">
-                   <div class="form-group">
-                      <label for="Usuario"><span class="glyphicon glyphicon-user"></span>Usuario</label>
-                      <input type="text" class="form-control" id="user_login" placeholder="Ingrese Usuario">
-                   <div class="form-group">
-                   <br/>
-                      <label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
-                      <input type="password" class="form-control" id="pass_login" placeholder="Ingrese Password">
-                   </div>
-                   <button type="button" class="btn btn-success btn-block" onclick="login()"><span class="glyphicon glyphicon-share" >  Login</span></button>
+                   <form action="verificarUsuarioLogin" method="post">
+                   		<div class="form-group">
+                   			<label for="Usuario"><span class="glyphicon glyphicon-user"></span>Usuario</label>
+                      		<input type="text" class="form-control" name="user_login" id="user_login" placeholder="Ingrese Usuario" required="required">
+                   		</div>
+                   		<div class="form-group">
+                      		<label for="Password"><span class="glyphicon glyphicon-lock"></span>Password</label>
+                      		<input type="password" class="form-control" name="pass_login" id="pass_login" placeholder="Ingrese Password" required="required">
+                   		</div>
+                   		<button type="summit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-share">  Login</span></button>
                    </form>
                 </div>
                 <div class="modal-footer">
                    <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
-                   <p>Aun no tiene Cuenta? <a href="" data-toggle="modal" data-target="#registrar-modal" data-dismiss="modal">Registrarme </a></p>
+                   <p>Aun no tiene Cuenta? <a href="#">Registrarme </a></p>
                    <p>Olvido <a href="#">Password?</p>
                 </div>
           </div>
       </div>
   </div>
+
 
    
 

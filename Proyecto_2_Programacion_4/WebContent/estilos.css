@@ -1,10 +1,10 @@
-﻿footer{ 
+footer{ 
     margin-left: 1%; 
 }
 
 body {
     background-image: url(Recursos/steam.jpg);
-    background-attachment: fixed;/*para que sea estático*/
+    background-attachment: fixed;/*para que sea est�tico*/
     background-position: top right;/*arriba a la derecha*/
     background-repeat: no-repeat;/*que no se repita el fondo*/
      margin-top: 60px;
@@ -139,7 +139,7 @@ ul, ol {
 
   #izquierda{ 
     background-image: url(Recursos/relieve.jpg);
-    background-attachment: fixed;/*para que sea estático*/
+    background-attachment: fixed;/*para que sea est�tico*/
     background-position: top right;/*arriba a la derecha*/
     width:800px; 
     margin:20px; 
@@ -148,7 +148,7 @@ ul, ol {
 
 #derecha{ 
     background-image: url(Recursos/relieve.jpg);
-    background-attachment: fixed;/*para que sea estático*/
+    background-attachment: fixed;/*para que sea est�tico*/
     background-position: top right;/*arriba a la derecha*/
     width:200px; 
     margin:20px; 
@@ -230,7 +230,7 @@ font-size:20px;
 
 #main_biblioteca{
     background-image: url(Recursos/fondo_gris.jpg);
-    background-attachment: fixed;/*para que sea estático*/
+    background-attachment: fixed;/*para que sea est�tico*/
     background-position: top right;/*arriba a la derecha*/
     margin-top: 60px;
     margin-left: 80px;
