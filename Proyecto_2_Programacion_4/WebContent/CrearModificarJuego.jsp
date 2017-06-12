@@ -131,11 +131,12 @@
                     
                     </div>
                     <div class="row">
-                        <div class="col-md-11">
+                        <div class="col-md-11"><!-- cols="20" -->
                    		 	Argumento: <br>
                     		<span id="alertArgumento" data-toggle="popover" data-trigger="hover" data-placement="right" title="" dat-content="">
-                   				 <textarea class="form-control" name="argumentoJuego" rows="10" cols="20" id="argumento_juego">
+                   				 <textarea class="form-control" value="" style="height:30px;" name="argumentoJuego" rows="3"  id="argumento_juego">
                    				 </textarea>
+                   				 <div id="textArgumento" class="errores alert alert-danger" hidden>*Ingrese Argumento</div>
                    			</span>
               			</div>
               			</div>

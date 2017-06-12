@@ -64,7 +64,8 @@
 	                  document.getElementById("pimgJuego").focus();
 	                  bool=bool+1;
 	              }else{
-	            	  $("#pimgJuego").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
+	            	  $("#pimgJuego").css({"background-color":"green","boder":"1px solid red"});
+	            	  //$("#pimgJuego").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
 	            	  console.log("listo");
 	            	  $("#alertImgP").attr("data-content","");
 	            	  bool=bool-1;
@@ -81,10 +82,11 @@
 					$("#alertImg1").attr("data-content","*Debe Ingreser una Imagen del Juego");
 	                  console.log("TODAVIA NO imagen1");
 	                  
-	                  document.getElementById("imgJuego1").focus();
+	               //   document.getElementById("imgJuego1").focus();
 	                  bool=bool+1;
 	              }else{
-	            	  $("#imgJuego1").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
+	            	  $("#imgJuego1").css({"background-color":"green","boder":"1px solid red"});
+	            	 // $("#imgJuego1").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
 	            	  console.log("listo");
 	            	  $("#alertImg1").attr("data-content","");
 	            	  bool=bool-1;
@@ -100,10 +102,11 @@
 					$("#alertImg2").attr("data-content","*Debe Ingreser el Imagen primaria Juego");
 	                  console.log("TODAVIA NO imagen2");
 	                  
-	                  document.getElementById("imgJuego2").focus();
+	               //   document.getElementById("imgJuego2").focus();
 	                  bool=bool+1;
 	              }else{
-	            	  $("#imgJuego2").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
+	            	  $("#imgJuego2").css({"background-color":"green","boder":"1px solid red"});
+	            	//  $("#imgJuego2").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
 	            	  console.log("listo");
 	            	  $("#alertImg2").attr("data-content","");
 	            	  bool=bool-1;
@@ -119,16 +122,18 @@
 					$("#alertImg3").attr("data-content","*Debe Ingreser el Imagen primaria Juego");
 	                  console.log("TODAVIA NO imagen3");
 	                  
-	                  document.getElementById("imgJuego3").focus();
+	             //     document.getElementById("imgJuego3").focus();
 	                  bool=bool+1;
 	              }else{
-	            	  $("#imgJuego3").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
+	            	  $("#imgJuego3").css({"background-color":"green","boder":"1px solid red"});
+	            	//  $("#imgJuego3").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
 	            	  console.log("listo");
 	            	  $("#alertImg3").attr("data-content","");
 	            	  bool=bool-1;
 	              }
 			});
 			$("#imgJuego4").blur(function(){
+				
 				var imgP = $("#imgJuego4").val(); 
 				if(imgP==""||imgP==null||imgP.lenght<0){
 				   	//  $("#pimgJuego").closest('.form-group').removeClass('has-success has-feedback').addClass('has-error has-feedback');
@@ -136,12 +141,13 @@
 					//$("#pimgJuego").css("border","5px solid #f00"); 
 					$("#imgJuego4").css({"background-color":"red","boder":"1px solid red"});
 					$("#alertImg4").attr("data-content","*Debe Ingreser el Imagen primaria Juego");
-	                  console.log("TODAVIA NO imagen4");
+	                console.log("TODAVIA NO imagen4");
 	                  
-	                  document.getElementById("imgJuego4").focus();
+	             //     document.getElementById("imgJuego4").focus();
 	                  bool=bool+1;
 	              }else{
-	            	  $("#imgJuego4").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
+	            	  $("#imgJuego4").css({"background-color":"green","boder":"1px solid red"});
+	            	  //$("#imgJuego4").closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
 	            	  console.log("listo");
 	            	  $("#alertImg4").attr("data-content","");
 	            	  bool=bool-1;
@@ -149,12 +155,15 @@
 			});
 			
 			$("#argumento_juego").blur(function(){
+				
 				var argumento = $("#argumento_juego").val(); 
-				if(argumento==""||argumento==null||argumento.lenght<0){
+				if(argumento==""||argumento==null||argumento.lenght<0||/^\s+$/.test(argumento)){
+					//alert("holaaaaaaaaaaa");
+					$("#textArgumento").fadeIn();
 				   	$("#argumento_juego").closest('.form-group').removeClass('has-success has-feedback').addClass('has-error has-feedback');
 					$("#alertArgumento").attr("data-content","*Debe Ingreser el Imagen primaria Juego");
 	                  console.log("TODAVIA NO imagen5");
-	                  
+	                  $("#argumento_juego").css({"border-color":"red","boder":"1px solid red"});
 	                  document.getElementById("argumento_juego").focus();
 	                  bool=bool+1;
 	              }else{
