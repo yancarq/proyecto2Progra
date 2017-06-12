@@ -13,11 +13,11 @@ import modelo.UserBean;
 import modelo.WellKnownAttributes;
 
 /**
- * Servlet implementation class RedireccionamientoIndex
+ * Servlet implementation class RedireccionamientoCarrito
  */
-@WebServlet("/redireccionamientoIndex")
-public class RedireccionamientoIndex extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/redireccionamientoCarrito")
+public class RedireccionamientoCarrito extends HttpServlet {
+private static final long serialVersionUID = 1L;
     
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);
@@ -34,13 +34,8 @@ public class RedireccionamientoIndex extends HttpServlet {
 		
 		try{
 			if(bean!=null){
-				if(userBean.getPrivilegio()!=null && userBean.getPrivilegio().equals("Admin")){
-					 RequestDispatcher requestDispatcher = request.getRequestDispatcher("indexAdmin.jsp");  
-					 requestDispatcher.forward(request, response);  
-				}else{
-					 RequestDispatcher requestDispatcher = request.getRequestDispatcher("indexUsuario.jsp");  
-					 requestDispatcher.forward(request, response);  
-				 }
+				 RequestDispatcher requestDispatcher = request.getRequestDispatcher("Carrito.jsp");  
+				 requestDispatcher.forward(request, response);  
 			}else{
 				 RequestDispatcher requestDispatcher = request.getRequestDispatcher("paginaErrorVista");  
 				 requestDispatcher.forward(request, response);  
@@ -51,7 +46,7 @@ public class RedireccionamientoIndex extends HttpServlet {
 		}
 		
 	}
-    public RedireccionamientoIndex() {
+    public RedireccionamientoCarrito() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -71,5 +66,6 @@ public class RedireccionamientoIndex extends HttpServlet {
 		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
+
 
 }

@@ -37,13 +37,12 @@ public class RedireccionarBiblioteca extends HttpServlet {
 				 RequestDispatcher requestDispatcher = request.getRequestDispatcher("BibliotecaJuegosUsuario.jsp");  
 				 requestDispatcher.forward(request, response);  
 			}else{
-				System.out.println("REEDIRECIONAMIENTO");
-				 RequestDispatcher requestDispatcher = request.getRequestDispatcher("paginaErrorVista");  
-				 requestDispatcher.forward(request, response);  
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+				requestDispatcher.forward(request, response);  
 			}
 		}catch(Exception e){
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("paginaErrorVista");  
-			requestDispatcher.forward(request, response);  
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			requestDispatcher.forward(request, response);
 		}
 		
 	}

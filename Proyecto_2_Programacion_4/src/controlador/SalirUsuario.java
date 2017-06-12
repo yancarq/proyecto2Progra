@@ -30,7 +30,7 @@ public class SalirUsuario extends HttpServlet {
 		request.getSession().invalidate();
 		
 		// redirecciona hacia 
-		response.sendRedirect(request.getContextPath()+"/login.jsp");
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

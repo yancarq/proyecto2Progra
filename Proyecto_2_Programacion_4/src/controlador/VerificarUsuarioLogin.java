@@ -24,7 +24,8 @@ public class VerificarUsuarioLogin extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				response.setContentType("text/html");
-	
+				
+			try{
 				UserBean userBean = new UserBean(request.getParameter("user_login"),request.getParameter("pass_login"));
 				userBean.setImagen("yancarlos.jpe");
 				userBean.setNombre("Jason");
@@ -47,6 +48,10 @@ public class VerificarUsuarioLogin extends HttpServlet {
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
 					requestDispatcher.forward(request, response);
 				}
+			}catch(Exception e){
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+				requestDispatcher.forward(request, response);
+			}
 	}
 	
 	

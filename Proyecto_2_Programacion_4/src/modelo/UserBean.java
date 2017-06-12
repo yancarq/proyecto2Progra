@@ -50,7 +50,7 @@ public class UserBean {
 		return imagen;
 	}
 	public void setImagen(String imagen) {
-		this.imagen = "Recursos/Perfiles/"+imagen;
+		this.imagen = "Recursos/Perfiles/yancarlos.jpe";//+imagen;
 	}
 
 	public String getPrivilegio() {

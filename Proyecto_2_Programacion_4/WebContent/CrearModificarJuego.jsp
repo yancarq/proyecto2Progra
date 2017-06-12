@@ -33,13 +33,67 @@
         </button>
       </div>
      
-      <a style="padding-top:3px; margin-left:0px;" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" height="46" /></a>
-      
+       <a style="padding-top:3px; margin-left:0px;" class="navbar-brand" href="redireccionamientoIndex?usuario=<%
+           try{out.println(bean.getUsuario());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 requestDispatcher.forward(request, response);}%>&imagen=<%
+			try{out.println(bean.getImagen());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&nombre=<%
+			 try{out.println(bean.getNombre());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&correo=<%
+			 try{out.println(bean.getCorreo());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
+			 	try{out.println(bean.getContrasenia());}catch(Exception e){
+		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
+				try{out.println(bean.getPrivilegio());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>" id="img1"><img src="Recursos/logo.jpg" height="46" /></a>
+       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
-          <li><a href="admin_usuarios.html">Lista Usuarios</a></li>
-          <li><a href="admin_juegos.html">Lista Juegos</a></li>
+          <li><a href="redireccionamientoAdministrarUsuarios?usuario=<%
+           try{out.println(bean.getUsuario());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 requestDispatcher.forward(request, response);}%>&imagen=<%
+			try{out.println(bean.getImagen());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&nombre=<%
+			 try{out.println(bean.getNombre());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&correo=<%
+			 try{out.println(bean.getCorreo());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
+			 	try{out.println(bean.getContrasenia());}catch(Exception e){
+		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
+				try{out.println(bean.getPrivilegio());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>">Lista Usuarios</a></li>
+          <li><a href="redireccionacionamientoAdministrasJuegos?usuario=<%
+           try{out.println(bean.getUsuario());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 requestDispatcher.forward(request, response);}%>&imagen=<%
+			try{out.println(bean.getImagen());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&nombre=<%
+			 try{out.println(bean.getNombre());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&correo=<%
+			 try{out.println(bean.getCorreo());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
+			 	try{out.println(bean.getContrasenia());}catch(Exception e){
+		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
+				try{out.println(bean.getPrivilegio());}catch(Exception e){
+        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
+			 	requestDispatcher.forward(request, response);}%>">Lista Juegos</a></li>
         </ul>
         <form class="navbar-form navbar-right" id="barraBusqueda">
           <div class="form-group">
@@ -51,7 +105,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="">Señor Administrador</a></li>
             <li><a href="">|</a></li>
-            <li><a href="salirUsuarioControladora">Salir</a></li>
+             <li><a href="salirUsuarioControladora"><%out.println("Salir");%></a></li>
         </ul>
         
       </div>      

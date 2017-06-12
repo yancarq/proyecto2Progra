@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="modelo.UserBean"%>
+    <%@ page import="modelo.UserBean"%>
 <%@ page import="modelo.WellKnownAttributes" %>
 <%	UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,12 +11,10 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
-    
-
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" >
-	    
+	 <nav class="navbar navbar-inverse navbar-fixed-top" >
+    
     <div class="container-fluid" >
       <div class="navbar-header" >
         <button type="button" class="navbar-toggle" data-target="#menuOpciones" aria-expanded="false">
@@ -51,7 +49,7 @@
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
-          <li><a href="redireccionamientoIndex?usuario=<%
+          <li><a href="redireccionamientoAdministrarUsuarios?usuario=<%
            try{out.println(bean.getUsuario());}catch(Exception e){
         	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
 			 requestDispatcher.forward(request, response);}%>&imagen=<%
@@ -69,9 +67,8 @@
 					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
 				try{out.println(bean.getPrivilegio());}catch(Exception e){
         	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>">Tienda</a></li>
-         
-           <li><a href="redireccionarBiblioteca?usuario=<%
+			 	requestDispatcher.forward(request, response);}%>">Lista Usuarios</a></li>
+          <li><a href="redireccionacionamientoAdministrasJuegos?usuario=<%
            try{out.println(bean.getUsuario());}catch(Exception e){
         	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
 			 requestDispatcher.forward(request, response);}%>&imagen=<%
@@ -89,76 +86,24 @@
 					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
 				try{out.println(bean.getPrivilegio());}catch(Exception e){
         	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>">Biblioteca</a></li>
+			 	requestDispatcher.forward(request, response);}%>">Lista Juegos</a></li>
         </ul>
-		
+
         <form class="navbar-form navbar-right" id="barraBusqueda">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-		<%!  String variableLogOut = "";%>
-	
-         <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><img src=<%try{
-            		out.println(bean.getImagen());
-            	}catch(Exception e){
-            		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 		requestDispatcher.forward(request, response);
-            	} %> class="img-circle" width="19"> <% try{ 
-            			out.println(bean.getUsuario());
-            	}catch(Exception e){
-            		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 		requestDispatcher.forward(request, response);
-			 	}%></a>
-                <ul>
-                   <li><a href="redireccionamientoCuentaUsuario?usuario=<%
-           try{out.println(bean.getUsuario());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 requestDispatcher.forward(request, response);}%>&imagen=<%
-			try{out.println(bean.getImagen());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&nombre=<%
-			 try{out.println(bean.getNombre());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&correo=<%
-			 try{out.println(bean.getCorreo());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
-			 	try{out.println(bean.getContrasenia());}catch(Exception e){
-		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
-				try{out.println(bean.getPrivilegio());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>"><span class="glyphicon glyphicon-user"> Mi cuenta</span></a></li>
-                        <li><a href="redireccionamientoCarrito?usuario=<%
-           try{out.println(bean.getUsuario());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 requestDispatcher.forward(request, response);}%>&imagen=<%
-			try{out.println(bean.getImagen());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&nombre=<%
-			 try{out.println(bean.getNombre());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&correo=<%
-			 try{out.println(bean.getCorreo());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
-			 	try{out.println(bean.getContrasenia());}catch(Exception e){
-		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
-				try{out.println(bean.getPrivilegio());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>"><span class="glyphicon glyphicon-shopping-cart"> Carrito</span></a></li>
-                    </ul>
-            </li>
+       <!--  ======================================================================================================================================= --> 
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="">Señor Administrador</a></li>
             <li><a href="">|</a></li>
-            <li><a href="salirUsuarioControladora"><%out.println("Salir");%></a></li>
+             <li><a href="salirUsuarioControladora"><%out.println("Salir");%></a></li>
         </ul>
-      </div>
+        <!--  ======================================================================================================================================= -->
+      </div>      
     </div>
-    
   </nav>
   
   <br>
@@ -428,6 +373,6 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+	
 </body>
 </html>
