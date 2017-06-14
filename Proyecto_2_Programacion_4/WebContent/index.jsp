@@ -1,3 +1,8 @@
+<%@page import="controlador.ControladorJuegos" %>
+<%
+	ControladorJuegos cj = new ControladorJuegos();
+
+%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="modelo.UserBean"%>
@@ -150,6 +155,14 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
             
       });
 	</script>
+
+	
+	<style>
+		container {
+		    width: 1164px;
+		}
+		
+	</style>
     
 </head>
 <body>
@@ -166,13 +179,12 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 
       </div>
      
-      <a style="" class="navbar-brand" href="index.jsp" id="img1"><img src="Recursos/logo.jpg" width="200" height="50" /></a>
+      
       
       <div class="collapse navbar-collapse " id="menuOpciones">
         
         <ul class="nav navbar-nav">
           <li><a href="index.jsp">Tienda</a></li>
-          <li><a href="validacionSessionExista">Biblioteca</a></li>
         </ul>
 
         <form class="navbar-form navbar-right" id="barraBusqueda">
@@ -194,34 +206,9 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
   </nav>
   
   <br>
-  <div="container" >      
-    <div style="border: 450px; margin-top: -25px;" class"img-responsive row" >
-      <article height="60" class="col-md-2">
-        <div id="muro_tags">
-          <ul>
-            <font face="Comic Sans MS,arial,verdana" color="black" size="2">
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Magia</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Mundo Abierto</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Aventura</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Ciencia ficción</a></li><br>              
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Acción</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Guerra</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Sigilo</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Plataformas</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Estrategia</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Horror</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Arcade</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >RPG</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Deportes</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Indie</a></li><br>
-              <li style="padding-top:4px;"><a href="" class="glyphicon glyphicon-chevron-right btn-block app_tag btn btn-success btn-lg btn-sm " >Acceo Anticipado</a></li><br>
-              <br>
-            </font>
-          </ul>
-        </div>
-      </article>
-      
-      <aside class="col-md-9">
+  <div="container-fluid" >      
+    <div style="border: 450px; margin-top: -25px; margin-left: 20px; margin-right: 30px;" class"img-responsive" >
+
         <h2>
           <font color="Lime">
             Novedades:
@@ -244,16 +231,13 @@ bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);%>
 <!-- Carousel nav -->
           <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        </div>
-      </aside>     
+        </div>   
     </div>
   </div>
-<!-- Cargar Juegos -->
+  <br/>
+  <!-- Juegos Dinamicos -->
 
-
-  <!-- ssdfsdf -->
-
-  
+  <%= cj.getJuegos() %>
 
  <!--Modal Registrar-->
   <div class="modal fade" id="registrar-modal" role="dialog" data-backdrop="static" data-keyboard="false">

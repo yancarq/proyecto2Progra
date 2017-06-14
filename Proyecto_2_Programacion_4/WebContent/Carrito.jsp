@@ -200,7 +200,7 @@
                                       <option>American Express</option>
                                       <option>Discover</option>
                                       <option>JCB</option>
-                                    </select>
+                               </select>
                           </div>
                               
                       </div>

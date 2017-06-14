@@ -1,10 +1,22 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Clases.Imagenes"%>
+<%@page import="controlador.ControladorJuegos"%>
+<%@page import="Clases.Juegos"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="modelo.UserBean"%>
 <%@ page import="modelo.WellKnownAttributes" %>
+
+<%
+	int id= Integer.parseInt(request.getParameter("id"));
+	Juegos juego = new ControladorJuegos().getJuegos(id);
+	ArrayList<Imagenes> img = new ControladorJuegos().getImagenJuego(id);
+%>
+
 <%
 UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN);
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +26,7 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
+    
 
 
     <style>
@@ -36,6 +49,7 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
     </style>
 </head>
 <body>
+
 	<nav class="navbar navbar-inverse navbar-fixed-top" >
     
     <div class="container-fluid" >
@@ -48,166 +62,49 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
         </button>
 
       </div>
-     
-       <a style="padding-top:3px; margin-left:0px;" class="navbar-brand" href="redireccionamientoIndex?usuario=<%
-           try{out.println(bean.getUsuario());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 requestDispatcher.forward(request, response);}%>&imagen=<%
-			try{out.println(bean.getImagen());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&nombre=<%
-			 try{out.println(bean.getNombre());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&correo=<%
-			 try{out.println(bean.getCorreo());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
-			 	try{out.println(bean.getContrasenia());}catch(Exception e){
-		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
-				try{out.println(bean.getPrivilegio());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>" id="img1"><img src="Recursos/logo.jpg" height="46" /></a>
-          
-      <div class="collapse navbar-collapse " id="menuOpciones">
-        
-        <ul class="nav navbar-nav">
-          <li><a href="redireccionamientoIndex?usuario=<%
-           try{out.println(bean.getUsuario());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 requestDispatcher.forward(request, response);}%>&imagen=<%
-			try{out.println(bean.getImagen());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&nombre=<%
-			 try{out.println(bean.getNombre());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&correo=<%
-			 try{out.println(bean.getCorreo());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
-			 	try{out.println(bean.getContrasenia());}catch(Exception e){
-		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
-				try{out.println(bean.getPrivilegio());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>">Tienda</a></li>
-          <li><a href="redireccionarBiblioteca?usuario=<%
-           try{out.println(bean.getUsuario());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 requestDispatcher.forward(request, response);}%>&imagen=<%
-			try{out.println(bean.getImagen());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&nombre=<%
-			 try{out.println(bean.getNombre());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&correo=<%
-			 try{out.println(bean.getCorreo());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
-			 	try{out.println(bean.getContrasenia());}catch(Exception e){
-		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
-				try{out.println(bean.getPrivilegio());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>"">Biblioteca</a></li>
-        </ul>
+<!-- Aqui detallejuego.txt -->
 
-        <form class="navbar-form navbar-right" id="barraBusqueda">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><img src=<%try{
-            		out.println(bean.getImagen());
-            	}catch(Exception e){
-            		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 		requestDispatcher.forward(request, response);
-            	} %> class="img-circle" width="19"> <% try{ 
-            			out.println(bean.getUsuario());
-            	}catch(Exception e){
-            		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 		requestDispatcher.forward(request, response);
-			 	}%></a>
-                <ul>
-                   <li><a href="redireccionamientoCuentaUsuario?usuario=<%
-           try{out.println(bean.getUsuario());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 requestDispatcher.forward(request, response);}%>&imagen=<%
-			try{out.println(bean.getImagen());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&nombre=<%
-			 try{out.println(bean.getNombre());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&correo=<%
-			 try{out.println(bean.getCorreo());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
-			 	try{out.println(bean.getContrasenia());}catch(Exception e){
-		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
-				try{out.println(bean.getPrivilegio());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>"><span class="glyphicon glyphicon-user"> Mi cuenta</span></a></li>
-                        <li><a href="redireccionamientoCarrito?usuario=<%
-           try{out.println(bean.getUsuario());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 requestDispatcher.forward(request, response);}%>&imagen=<%
-			try{out.println(bean.getImagen());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&nombre=<%
-			 try{out.println(bean.getNombre());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&correo=<%
-			 try{out.println(bean.getCorreo());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>&contrasenia=<%
-			 	try{out.println(bean.getContrasenia());}catch(Exception e){
-		        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-					 	requestDispatcher.forward(request, response);}%>&privilagio=<%
-				try{out.println(bean.getPrivilegio());}catch(Exception e){
-        	   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/paginaErrorVista");  
-			 	requestDispatcher.forward(request, response);}%>"><span class="glyphicon glyphicon-shopping-cart"> Carrito</span></a></li>
-                    </ul>
-            </li>
-            <li><a href="">|</a></li>
-             <li><a href="salirUsuarioControladora"><%out.println("Salir");%></a></li>
-        </ul>
-        
-      </div>      
-    </div>
-  </nav>
-	
 <!-- ---------------------AQUI INICIA LO QUE HAY QUE HACER DE FORMA DINAMICA------------------------------------->
   <div id="main_juegos" class="container">
  
   	
-    <h2 align="center5">The Witcher 3: Wild Hunt</h2>
+    <h2 align="center"><%=juego.getNombre_juego()%></h2>
 
       <section class="main row">
         
         <article class="col-md-4 col-md-5 col-lg-6" >
           <br>
           <div id="contenedor" style="border: 450px;" class"img-responsive">
-            <div id="myCarousel" class="carousel slide">
+            <div id="myCarousel" class="carousel slide" data-ride="carosel">
               <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                   <li data-target="#myCarousel" data-slide-to="1"></li>
                   <li data-target="#myCarousel" data-slide-to="2"></li>
                   <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
                 </ol>
                 <!-- Carousel items -->
                 <div class="carousel-inner">
-                  <div class="active item"><img  src="Recursos/ImagenesTheWitcher3/thewitcher3_1.jpg" alt="banner1" /></div>
-                  <div class="item"><img  src="Recursos/ImagenesTheWitcher3/thewitcher3_2.jpg" alt="banner2" /></div>
-                  <div class="item"><img  src="Recursos/ImagenesTheWitcher3/thewitcher3_3.jpg" alt="banner3" /></div>
-                  <div class="item"><img  src="Recursos/ImagenesTheWitcher3/thewitcher3_4.jpg" alt="banner4" /></div>
+                  <div class="item active">
+                  	<img  src="<%=juego.getImg_juegos()%>" alt="banner1" />
+                  </div>
+                  <%for(Imagenes imgs: img){%>
+                  	<div class="item">
+                  		<img  src="<%=imgs.getUrl_imagen_juego()%>" alt="banner" />	
+                  	</div>
+                  <%}%>
+                <!--  <div class="item"><img  src="images/home/thewitcher3_1.jpg" alt="banner3" /></div>
+                  <div class="item"><img  src="Recursos/ImagenesTheWitcher3/thewitcher3_4.jpg" alt="banner4" /></div>-->
                 </div>
                 <!-- Carousel nav -->
-                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                <a class="left carousel-control " href="#myCarousel" data-slide="prev">
+                	<span class="glyphicon glyphicon-chevron-left"></span>
+      				<span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+     				  <span class="sr-only">Next</span>
+                </a>
               </div>
           </div>
         </article>
@@ -217,8 +114,8 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
                 <h3 style="padding-top: -5px;">
                  Argumento:
                 </h3>
-                <p style="text-align: justify;">
-                CD Projekt RED ha declarado que no es necesario haber jugado a las entregas anteriores para poder disfrutar de Wild Hunt.2 Aunque similar a los anteriores títulos de The Witcher, Wild Hunt ha mejorado en varios aspectos respecto a juegos anteriores. El combate se basa en un sistema de juego de rol de acción combinado con el uso de magia. El sistema de combate ha sido completamente renovado. Wild Hunt introduce algunas mecánicas nuevas, como el «sentido de brujo», combate a caballo y en alta mar, nadar bajo el agua y el uso de una ballesta.
+                <p style="text-align:justify;">
+               		<%=juego.getArgumento_juego() %>
                 </p>
             </font>
             <font face="Comic Sans MS,arial,verdana" color="black">
@@ -226,7 +123,7 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
                  Etiquetas:
                </h3>
             </font>
-            <a href="" class="app_tag btn btn-success btn-lg btn-sm hipervinculo_juego" style="" >Magia</a>
+            <a href="" class="app_tag btn btn-success btn-lg btn-sm hipervinculo_juego" style="" ><%=juego.getGenero_juego() %></a>
             <a href="" class="app_tag btn btn-success btn-lg btn-sm hipervinculo_juego" style="" >Mundo Abierto</a>
             <a href="" class="app_tag btn btn-success btn-lg btn-sm hipervinculo_juego" style="" >Aventura</a>
             <a href="" class="app_tag btn btn-success btn-lg btn-sm hipervinculo_juego" style="" >Ciencia ficción</a>
@@ -236,26 +133,25 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
     </section>
 
     <div class="col-md-4" align="center">
-      <div>
-        <div>
-          <h1>Comprar The Witcher 3: Wild Hunt®</h1>                    
+    
+          <h1>Comprar <%=juego.getNombre_juego()%></h1>                    
             <div class="game_purchase_action">
               <div class="game_purchase_action_bg">
                 <div class="game_purchase_price price">
+               	 <form action="agregarproducto" method="post">
                    <font face="Comic Sans MS,arial,verdana" color="black"size="6">
-                     $39.99 USD
-                    </font>
-                </div>
-                <div class="btn_addtocart">
-                  <a class="btn btn-success" href="" role="button" data-toggle="modal" data-target="#verificaCompras-modal">
-                    <span>Añadir al carro</span>
-                  </a>             
+	                     $<%=juego.getPrecio_juego() %>USD
+                    </font> 
+                    <input type="hidden" value="<%=juego.getId_juego()%>" name="idJuego">
+                    <input type="hidden" value="1" id="txt-cantidad" name="cantidad"/>
+                    <button type="submit" class="btn btn-success">
+                    	<span>Añadir al carro</span>
+                    </button>
+              
+               </form>       
                 </div>
               </div>
-              <br>
             </div>
-        </div>
-	    </div>
     </div>
 
     <div>
@@ -270,11 +166,12 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
             Minimo:
           </h4>
           <ul>
-            <li type="circle"><strong>OS:</strong> 64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10</li>
+            <!-- <li type="circle"><strong>OS:</strong> 64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10</li>
             <li type="circle"><strong>Procesador:</strong> Intel CPU Core i5-2500K 3.3GHz / AMD CPU Phenom II X4 940</li>
             <li type="circle"><strong>Memoria:</strong> 6 GB de RAM</li>
             <li type="circle"><strong>Gráficos:</strong> Nvidia GPU GeForce GTX 660 / AMD GPU Radeon HD 7870</li>
-            <li type="circle"><strong>Almacenamiento:</strong> 35 GB de espacio disponible</li>
+            <li type="circle"><strong>Almacenamiento:</strong> 35 GB de espacio disponible</li>-->
+            <li type="circle" style="text-align: justify;"><strong></strong> <%=juego.getRequisitos_minimos_juego()%></li>
           </ul>
         </font>
       </div>
@@ -285,11 +182,12 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
             Recomendado:
           </h4>
           <ul>
-            <li type="circle"><strong>OS:</strong> 64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10</li>
+            <!-- <li type="circle"><strong>OS:</strong> 64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10</li>
             <li type="circle"><strong>Procesador:</strong> Intel CPU Core i7 3770 3.4 GHz / AMD CPU AMD FX-8350 4 GHz</li>
             <li type="circle"><strong>Memoria:</strong> 8 GB de RAM</li>
             <li type="circle"><strong>Gráficos:</strong> Nvidia GPU GeForce GTX 770 / AMD GPU Radeon R9 290</li>
-            <li type="circle"><strong>Almacenamiento:</strong> 35 GB de espacio disponible</li>
+            <li type="circle"><strong>Almacenamiento:</strong> 35 GB de espacio disponible</li>-->
+            <li type="circle" style="text-align: justify;"><strong></strong><%=juego.getRequisitos_recomendados_juego() %>></li>
           </ul>
         </font>
       </div>
@@ -297,69 +195,28 @@ UserBean bean = (UserBean) request.getAttribute(WellKnownAttributes.SESSION_BEAN
     </div> 
   </div>
 	<!-- ---------------------HASTA AQUI ------------------------------------------------------------------------------------>
-  <footer>
-      <HR align="center" size="2" width="1310" color="Green" noshade>
-      <font face="arial" color="white">
-      Esto fue realizado por:<br>
-      Jason F. González García<br>
-      Yancarlos Retana Quesada<br>
-      </font>
-  </footer>
+ 	<footer>
+	      <HR align="left" size="2" width="1310" color="Green" noshade>
+	      <p align="center"> <font face="arial" color="white">
+	        Esto fue realizado por:<br>
+	        Jason F. González García<br>
+	        Yancarlos Retana Quesada<br>
+	      </font>
+	      </p>
+    </footer>
+ 
 
 
-  <script src="js/jquery.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function(){
         $('.myCarousel').carousel({
-            interval: 3000
+        	  interval: 3000
         });
     });
   </script>
-  <!--Modal Verificar Compra-->
-  <div class="modal fade" id="verificaCompras-modal" role="dialog" data-backdrop="static" data-keyboard="false" >
-      <div class="modal-dialog">
-            <div class="modal-content">
-                 <div class="modal-body" style="padding:20px 50px;">
-                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                   <h2><span class="glyphicon glyphicon-shopping-cart"></span> Carrito Compras
-                   <a class="btn btn-primary  pull-right" href="index.html" role="button" >Continuar con sus compras</a></h2>
-                   <form role="form">
-                        <div class="form-group row">
-                        <label for="juegoP" id="lblArticulos">Nombre Articulo</label>
 
-                        <label for="juegoP" id="lblPrecio">Precio</label>
-                          <div class="panel panel-default">
-                            <div class="panel-body">
-                              <div class="form-group row">
-                                  <div class="col-xs-3">
-                                    
-                                    <img src="Recursos/the_witcher_3.jpg" class="img-rounded" alt="Cinque Terre" width="70" height="70" id="juegoP">
-                                    </div>
-                                    <div class="col-xs-3">
-                                    <label id="lblNombreJg">The Witcher 3: Wild Hunt</label>
-                                  </div>
-                                  <div class="col-xs-3">
-                                    <label id="lblPreciojg">$39.99 USD</label>
-                                  </div>
-                              </div>
-                            </div>
-                           </div>
-                        </div>
-                   </form>
-
-                  </div>
-
-                  <div class="modal-footer">
-                    <div class="checkbox">
-                          <label><input type="checkbox" value="" unchecked>Acepto los <a href="#">Términos y condiciones</a></label>
-                    </div>
-                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cancel</span></button>
-                    <a class="btn btn-primary  pull-right" href="carrito.html" role="button" ><span class="glyphicon glyphicon-check"></span>Pagar</a></h2>
-                </div>
-            </div>
-      </div>
-  </div>
   
   
 </body>
